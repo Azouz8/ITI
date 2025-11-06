@@ -1,0 +1,71 @@
+body{
+    background-color: #f0f8ff;
+}
+legend{
+    color: red;
+}
+fieldset{
+    border-color: #86b7fe;
+}
+#enterImageID , #GIFImage , #socialMediaImage{
+    text-align: center;
+}
+#HeadersDivID{
+    text-align: center;
+}
+
+#DiffSizeID{
+    font-size: 25px;
+}
+#DiffColorID{
+    color: red;
+}
+#NextButtonID{
+    text-align: end;
+}
+
+#mailToID{
+    text-align: center;
+}
+
+#RegisterationFormID{
+    text-align: center;
+}
+#LoginFormDivID{
+    width: 500px;
+    margin: 0 auto;
+}
+#usernameLoginID, #passwordLoginID{
+    width: 100%;
+    margin-bottom: 8px;
+}
+#SignInButtonID{
+    text-align: center;
+}
+
+table, td{
+    border: 2px solid #dcdcdc;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+table{
+    text-align: start;
+}
+td{
+    padding: 8px;
+}
+#BioTextArea{
+    resize: none;
+}
+#registerButton{
+    margin-right: 20px;
+}
+#clearButton{
+    margin-left: 20px;
+}
+#InterestsText, #BioText{
+    text-align: center;
+}
+#InterestsData, #ButtonsRow{
+    text-align: center;
+}

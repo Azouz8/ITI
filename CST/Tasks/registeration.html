@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registeration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="RegisterationFormID">
+        <h1><u>Registeration Form</u></h1>
+        <form action="login.html" method="get">
+            <table>
+                <tr>
+                    <td>First Name</td>
+                    <td><input type="text" name="fstName" id="fstName" placeholder="Enter Your First Name"></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" name="lstName" id="lstName" placeholder="Enter Your Last Name"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="email" id="email" placeholder="Enter Your Email"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" id="password"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Gender</td>
+                    <td><input type="radio" name="GenderRadio" id="female" value="female"><label
+                            for="female">Female</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="GenderRadio" id="male" value="Male"><label for="male">Male</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td><select name="county" id="country">
+                            <optgroup label="Africa">
+                                <option value="Egypt">Egypt</option>
+                                <option value="Sudan">Sudan</option>
+                                <option value="Libya">Libya</option>
+                                <option value="Tunisia">Tunisia</option>
+                                <option value="Moroco">Moroco</option>
+                            </optgroup>
+                            <optgroup label="Europe" disabled>
+                                <option value="Italy">Italy</option>
+                                <option value="Sweden">Sweden</option>
+                                <option value="Spain">Spain</option>
+                            </optgroup>
+                            <optgroup label="Asia">
+                                <option value="Palestine">Palestine</option>
+                                <option value="South Korea">South Korea</option>
+                                <option value="India">India</option>
+                            </optgroup>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Birth Day</td>
+                    <td><input type="date" name="birthDay" id="birthDay"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="InterestsText"><u>Interests</u></td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="InterestsData">
+                        <input type="checkbox" name="Sports" id="Sports"> <label for="Sports">Sports</label>
+                        <input type="checkbox" name="Music" id="Music"> <label for="Music">Music</label>
+                        <input type="checkbox" name="Fashion" id="Fashion"> <label for="">Fashion</label> <br>
+                        <input type="checkbox" name="Reading" id="Reading"> <label for="Reading">Reading</label>
+                        <input type="checkbox" name="Shopping" id="Shopping"> <label for="Shopping">Shopping</label>
+                        <input type="checkbox" name="Movies" id="Movies"> <label for="Movies">Movies</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="BioText"><u>Bio</u></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><textarea name="Bio" id="BioTextArea" cols="40" rows="3"></textarea></td>
+                </tr>
+                <tr id="ButtonsRow">
+                    <td colspan="2"><input type="submit" value="Register" id="registerButton"><input type="reset"
+                            value="Clear" id="clearButton"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
