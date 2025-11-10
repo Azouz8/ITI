@@ -69,6 +69,13 @@ intersect
     select DeptName
     from Dependent
 
+--10
+select E.SSN , E.Fname
+from Employee E
+where EXISTS (select 1
+from Dependent D
+where E.SSN = D.ESSN )
+
 --11
 insert into Department
 values
