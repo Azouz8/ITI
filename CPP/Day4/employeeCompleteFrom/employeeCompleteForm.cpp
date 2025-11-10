@@ -175,32 +175,6 @@ int takeKeyboardInput()
 }
 void handlePressedKey(int key)
 {
-    // switch (key)
-    // {
-    // case 27:
-    //     cout << "Exiting...\n";
-    //     exitFlag = 1;
-    //     break;
-    // case 72:
-    //     if (current > 0)
-    //     {
-    //         current--;
-    //     }
-    //     break;
-    // case 80:
-    //     if (current < 3)
-    //     {
-    //         current++;
-    //     }
-    //     break;
-    // case 13:
-    //     // system("cls");
-    //     // cout << current << "HEREEEE\n";
-    //     // cout << "Option pressed is:" << options.at(current) << endl;
-    //     break;
-    // default:
-    //     break;
-    // }
     if (key == 27)
     {
         cout << "Exiting...\n";
@@ -223,13 +197,6 @@ void handlePressedKey(int key)
     else if (key == 13)
     {
         optionChoosed = 1;
-        // if (current == 3)
-        // {
-        //     cout << "Exiting...\n";
-        // }
-        // system("cls");
-        // cout << "Option pressed is:" << options.at(current) << endl;
-        // return;
     }
 }
 
