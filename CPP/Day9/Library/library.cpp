@@ -115,6 +115,8 @@ int main()
     lib.addBooks(&b1);
     lib.addBooks(&b2);
     lib.addBooks(&b3);
+    Book b4 = b1; 
+    lib.addBooks(&b4);
 
     lib.listBooks();
 
