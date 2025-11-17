@@ -75,7 +75,6 @@ public:
     }
     void draw()
     {
-        // cout << "x1:" << a.getX() << " y1:" << a.getY() << " x2:" << b.getX() << " y2:" << b.getY() << " r:" << r << endl;
         drawEllipse(a.getX(), a.getY(), b.getX(), b.getY(), r);
     }
 };
