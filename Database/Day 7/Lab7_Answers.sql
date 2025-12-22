@@ -115,3 +115,59 @@ FROM Stud_Course SC INNER JOIN Student S
     on SC.St_Id = S.St_Id INNER JOIN
     Department D on S.Dept_Id = D.Dept_Id
     where D.Dept_Name = 'SD'
+
+--- Bonus
+create FUNCTION createStudRow()
+RETURNS @t TABLE(
+    id int,
+    fname VARCHAR(30),
+    lname VARCHAR(30)
+    ) AS
+    BEGIN
+    DECLARE @x int
+    set @x = 3000
+    WHILE @x<=6000
+    BEGIN
+        INSERT INTO @t
+        values(@x, 'Jane', 'Smith')
+        set @x+=1
+    END
+    RETURN
+END
+
+INSERT into Student
+    (St_Id, St_Fname,St_Lname)
+SELECT *
+from createStudRow()
+
+
+
+---------------------
+
+CREATE TABLE Employees
+(
+    EmpID INT PRIMARY KEY,
+    EmpName VARCHAR(50),
+    OrgNode hierarchyid
+);
+INSERT INTO Employees
+VALUES
+    (1, 'CEO', hierarchyid::GetRoot());
+
+INSERT INTO Employees
+VALUES
+    (2, 'Manager', hierarchyid::GetRoot().GetDescendant(NULL, NULL));
+
+INSERT INTO Employees
+VALUES
+    (3, 'Employee A',
+        hierarchyid::GetRoot().GetDescendant(NULL, NULL).GetDescendant(NULL, NULL));
+
+INSERT INTO Employees
+VALUES
+    (4, 'Employee B',
+        hierarchyid::GetRoot().GetDescendant(NULL, NULL).GetDescendant(NULL, NULL));
+
+SELECT EmpID, EmpName, OrgNode.ToString() AS Hierarchy
+FROM Employees
+ORDER BY OrgNode;
