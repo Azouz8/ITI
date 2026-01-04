@@ -6,6 +6,7 @@ var userName,
 window.onload = function () {
   if (document.location.search) {
     var form = document.location.search;
+    console.log(form.substring(1, form.length - 1).split("&"));
     let length = form.substring(1, form.length - 1).split("&").length;
     for (i = 0; i < length; i++) {
       formObj[form.substring(1, form.length).split("&")[i].split("=")[0]] = form

@@ -23,7 +23,6 @@ for (let i = 0; i < images.length; i++) {
 var img1ID, img1Src, img2ID, img2Src;
 let isSecond = false,
   isChecking = false;
-window.onload = function () {};
 
 function openImage(img) {
   if (!isChecking) {
@@ -40,9 +39,9 @@ function openImage(img) {
       setTimeout(function () {
         if (img1Src == img2Src) {
           var img1 = document.getElementById(img1ID);
-          img1.onclick = function () {};
+          img1.onclick = "";
           var img2 = document.getElementById(img2ID);
-          img2.onclick = function () {};
+          img2.onclick = "";
         } else {
           var img1 = document.getElementById(img1ID);
           img1.src = moonImagePath;

@@ -4,7 +4,6 @@ function wait5sec() {
   while (true) {
     let newTimeSec = new Date().getSeconds();
     if (newTimeSec == (curTimeSec + 5) % 60) {
-      console.log("HERREEE");
       break;
     }
   }
