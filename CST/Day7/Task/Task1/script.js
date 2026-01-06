@@ -1,7 +1,5 @@
 window.onload = function () {
-  this.document
-    .getElementById("buttonID")
-    .addEventListener("contextmenu", function (event) {
-      event.preventDefault();
-    });
+  this.document.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+  });
 };

@@ -14,7 +14,6 @@ function EnterEqual() {
     isMulDivFinished = false,
     answerValue = ans.value;
   while (isNaN(answerValue)) {
-    console.log(i);
     if (answerValue[i] == "/" || answerValue[i] == "*") {
       var op = answerValue[i];
       var splitNum1 = answerValue.split(op)[0];
@@ -30,7 +29,6 @@ function EnterEqual() {
       if (isMulDivFinished) {
         var op = answerValue[i];
         if(answerValue.split(op)[0] != ""){
-
           var splitNum1 = answerValue.split(op)[0];
           var splitNum2 = answerValue.split(op)[1];
         }
@@ -50,7 +48,6 @@ function EnterEqual() {
       lastPMIndex = i;
     }
     if (i == answerValue.length) {
-      console.log("UDONEE");
       isMulDivFinished = true;
       lastPMIndex = -1;
       i = 0;
