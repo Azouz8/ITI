@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="cookie.js"></script>
+</head>
+
+<body>
+    <input type="text" name="userName" id="userNameID" placeholder="Enter UR Name" required>
+    <br><br>
+    <input type="text" name="userAge" id="userAgeID" placeholder="Enter UR Age" required>
+    <br><br>
+    <input type="radio" name="gender" id="userGenderMale" value="Male" required><label for="userGenderMale"><img
+            src="../Task Resources/cookies/1.jpg" alt=""></label>
+    <input type="radio" name="gender" id="userGenderFemale" value="Female" required><label for="userGenderFemale"><img
+            src="../Task Resources/cookies/2.jpg" alt=""></label>
+    <br><br>
+    <span>Select UR Favourite Color</span>
+    <select name="color" id="colorMenu">
+        <option value="red">red</option>
+        <option value="blue">blue</option>
+        <option value="green">green</option>
+    </select>
+    <br><br>
+    <button type="button" onclick="saveUserData()">
+        Register
+    </button>
+</body>
+
+</html>
