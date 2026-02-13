@@ -1,5 +1,6 @@
 let userName, userAge, userGender, favColor, visitsNo;
-let childWin;
+let childWin,
+  allCookies = {};
 onload = function () {
   visitsNo = parseInt(getCookie("visitsNo")) || 0;
 };
@@ -77,6 +78,17 @@ function getCookie(cookieName) {
     console.log(err);
   }
 }
+function getAllCookies() {
+  let cookiesLength = document.cookie.split(";").length;
+  let cookies = document.cookie.split(";");
+  let cookieValue;
+  for (let i = 0; i < cookiesLength; i++) {
+    let cookie = cookies[i].trim();
+    allCookies[cookie.split("=")[0]] = cookie.split("=")[1];
+  }
+  return allCookies;
+}
+
 function setCookie(cookieName, cookieValue, expiryDate = new Date().getDate()) {
   console.log("Cookie Created");
   document.cookie = cookieName + "=" + cookieValue + ";expires=" + expiryDate;
