@@ -54,16 +54,9 @@ namespace Lab
         {
             this.salary = salary;
         }
-        public void setGender(string gender)
+        public void setGender(Gender gender)
         {
-            try
-            {
-                this.gender = (Gender)Enum.Parse(typeof(Gender), gender, true);
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException("Gender must be 'M' or 'F'.", nameof(gender), ex);
-            }
+            this.gender = gender;
         }
         public void setSecPrev(SecurityPrev securityPrev)
         {
