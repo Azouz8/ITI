@@ -2,8 +2,8 @@ namespace Lab
 {
     internal class AnswerList
     {
-        Answer[] answers;
-        public AnswerList(Answer[] answers)
+        List<Answer> answers;
+        public AnswerList(List<Answer> answers)
         {
             this.answers = answers;
         }
@@ -20,13 +20,7 @@ namespace Lab
         }
         public void addAnswer(Answer answer)
         {
-            Answer[] newAnswers = new Answer[answers.Length + 1];
-            for (int i = 0; i < answers.Length; i++)
-            {
-                newAnswers[i] = answers[i];
-            }
-            newAnswers[answers.Length] = answer;
-            answers = newAnswers;
+            answers.Add(answer);
         }
         public Answer getAnswerById(int id)
         {
@@ -41,7 +35,7 @@ namespace Lab
         }
         public int Count
         {
-            get { return answers.Length; }
+            get { return answers.Count; }
         }
         override public string ToString()
         {

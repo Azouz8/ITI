@@ -13,5 +13,10 @@ namespace Lab
             this.Name = Name;
             this.Id = Id;
         }
+
+        public void ExamStartedCallback(object sender, ExamEventArgs e)
+        {
+            Console.WriteLine($"Exam Started for Student: {Name} in Subject {e.Subject.SubjectName}");
+        }
     }
 }

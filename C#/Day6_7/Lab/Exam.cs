@@ -6,6 +6,7 @@ namespace Lab
 {
     internal abstract class Exam : ICloneable, IComparable<Exam>
     {
+        internal event EventHandler<ExamEventArgs> ExamStarted;
         public int Time { get; set; }
         public int NoOfQuestions => Questions.Length;
         public Question[] Questions { get; set; }
@@ -36,6 +37,14 @@ namespace Lab
         public virtual void Start()
         {
             Mode = ExamMode.Starting;
+            if (Subject.EnrolledStudents != null)
+            {
+                foreach (var s in Subject.EnrolledStudents)
+                {
+                    ExamStarted += s.ExamStartedCallback;
+                }
+            }
+            ExamStarted.Invoke(this, new ExamEventArgs(Subject, this));
             Console.WriteLine("Exam started!");
         }
         public virtual void Finish()
