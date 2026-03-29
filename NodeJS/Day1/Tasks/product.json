@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1774780917999,
+        "price": "2223",
+        "name": "New Product"
+    },
+    {
+        "id": 1774780926415,
+        "name": "New Product2",
+        "price": "1222"
+    },
+    {
+        "id": 1774780936899,
+        "name": "New Product3",
+        "price": "333"
+    },
+    {
+        "id": 1774782477041,
+        "name": "Modified",
+        "price": "2000"
+    }
+]
