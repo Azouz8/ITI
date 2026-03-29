@@ -38,8 +38,8 @@
             txtJobLvl = new TextBox();
             numericUpDown = new NumericUpDown();
             label5 = new Label();
-            txtJobDesc = new TextBox();
             btnSave = new Button();
+            comboJobs = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)numericUpDown).BeginInit();
             SuspendLayout();
             // 
@@ -124,13 +124,6 @@
             label5.TabIndex = 10;
             label5.Text = "Job Desc";
             // 
-            // txtJobDesc
-            // 
-            txtJobDesc.Location = new Point(71, 175);
-            txtJobDesc.Name = "txtJobDesc";
-            txtJobDesc.Size = new Size(153, 23);
-            txtJobDesc.TabIndex = 11;
-            // 
             // btnSave
             // 
             btnSave.Location = new Point(103, 243);
@@ -141,13 +134,21 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
+            // comboJobs
+            // 
+            comboJobs.FormattingEnabled = true;
+            comboJobs.Location = new Point(71, 175);
+            comboJobs.Name = "comboJobs";
+            comboJobs.Size = new Size(153, 23);
+            comboJobs.TabIndex = 13;
+            // 
             // DetailedView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(comboJobs);
             Controls.Add(btnSave);
-            Controls.Add(txtJobDesc);
             Controls.Add(label5);
             Controls.Add(numericUpDown);
             Controls.Add(txtJobLvl);
@@ -177,7 +178,7 @@
         private TextBox txtJobLvl;
         private NumericUpDown numericUpDown;
         private Label label5;
-        private TextBox txtJobDesc;
         private Button btnSave;
+        private ComboBox comboJobs;
     }
 }

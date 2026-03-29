@@ -45,7 +45,6 @@
             grdView.Name = "grdView";
             grdView.Size = new Size(800, 426);
             grdView.TabIndex = 0;
-            grdView.DefaultValuesNeeded += grdView_DefaultValuesNeeded;
             // 
             // menuStrip1
             // 

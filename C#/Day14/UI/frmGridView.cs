@@ -9,15 +9,13 @@ namespace UI
         public frmGridView()
         {
             InitializeComponent();
-            grdView.DefaultValuesNeeded += grdView_DefaultValuesNeeded;
         }
-        EmployeeList employeeList;
         BindingSource empBindingSource;
         DataTable dtEmployees;
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dtEmployees = EmployeeManager.GetAllEmployeesDataTable();
-            employeeList = EmployeeManager.DataTableToEmpList(dtEmployees);
+            //employeeList = EmployeeManager.DataTableToEmpList(dtEmployees);
             empBindingSource = new BindingSource(dtEmployees, "");
             grdView.DataSource = empBindingSource;
         }
@@ -27,11 +25,5 @@ namespace UI
             EmployeeManager.SaveChanges(dtEmployees);
         }
 
-        private void grdView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
-        {
-            string uniqueId = "E" + new Random().Next(10000000, 99999999);
-            e.Row.Cells["emp_id"].Value = uniqueId;
-
-        }
     }
 }

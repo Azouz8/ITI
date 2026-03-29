@@ -26,9 +26,8 @@ namespace BLL.EntityManager
             }
             catch (Exception ex)
             {
-                // THIS WILL SHOW YOU THE ACTUAL SQL ERROR IN THE OUTPUT WINDOW
                 System.Diagnostics.Debug.WriteLine($"SQL Error: {ex.Message}");
-                throw; // Temporarily re-throw to see the crash details
+                throw;
             }
             return false;
 

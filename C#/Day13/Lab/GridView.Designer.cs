@@ -1,6 +1,6 @@
 ﻿namespace Lab
 {
-    partial class Form3
+    partial class GridView
     {
         /// <summary>
         /// Required designer variable.

@@ -1,11 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Lab
@@ -16,31 +12,36 @@ namespace Lab
         {
             InitializeComponent();
         }
+
         SqlConnection sqlConnection;
-        SqlCommand sqlCommand;
         SqlDataAdapter empSqlDataAdapter;
         SqlDataAdapter jobSqlDataAdapter;
+
         DataTable dtEmp = new();
         DataTable dtJobs = new();
+
         private void DetailedView_Load(object sender, EventArgs e)
         {
             sqlConnection = new SqlConnection();
-            sqlConnection.ConnectionString = ConfigurationManager.ConnectionStrings["pubsCN"].ConnectionString;
-            sqlCommand = new("select * from employee", sqlConnection);
-            empSqlDataAdapter = new SqlDataAdapter(sqlCommand);
+            sqlConnection.ConnectionString =
+                ConfigurationManager.ConnectionStrings["pubsCN"].ConnectionString;
 
-            SqlCommandBuilder empCommandBuilder = new SqlCommandBuilder(empSqlDataAdapter);
-            empSqlDataAdapter.UpdateCommand = empCommandBuilder.GetUpdateCommand();
-            empSqlDataAdapter.InsertCommand = empCommandBuilder.GetInsertCommand();
-            empSqlDataAdapter.DeleteCommand = empCommandBuilder.GetDeleteCommand();
+            empSqlDataAdapter = new SqlDataAdapter("select * from employee", sqlConnection);
+
+            SqlCommandBuilder empBuilder = new SqlCommandBuilder(empSqlDataAdapter);
+            empSqlDataAdapter.UpdateCommand = empBuilder.GetUpdateCommand();
+            empSqlDataAdapter.InsertCommand = empBuilder.GetInsertCommand();
+            empSqlDataAdapter.DeleteCommand = empBuilder.GetDeleteCommand();
+
             empSqlDataAdapter.Fill(dtEmp);
 
-            sqlCommand = new("select * from jobs", sqlConnection);
-            jobSqlDataAdapter = new SqlDataAdapter(sqlCommand);
-            SqlCommandBuilder jobCommandBuilder = new SqlCommandBuilder(jobSqlDataAdapter);
-            jobSqlDataAdapter.UpdateCommand = jobCommandBuilder.GetUpdateCommand();
-            jobSqlDataAdapter.InsertCommand = jobCommandBuilder.GetInsertCommand();
-            jobSqlDataAdapter.DeleteCommand = jobCommandBuilder.GetDeleteCommand();
+            jobSqlDataAdapter = new SqlDataAdapter("select * from jobs", sqlConnection);
+
+            SqlCommandBuilder jobBuilder = new SqlCommandBuilder(jobSqlDataAdapter);
+            jobSqlDataAdapter.UpdateCommand = jobBuilder.GetUpdateCommand();
+            jobSqlDataAdapter.InsertCommand = jobBuilder.GetInsertCommand();
+            jobSqlDataAdapter.DeleteCommand = jobBuilder.GetDeleteCommand();
+
             jobSqlDataAdapter.Fill(dtJobs);
 
             numericUpDown.Minimum = 0;
@@ -48,34 +49,31 @@ namespace Lab
 
             txtFName.DataBindings.Add("Text", dtEmp, "fname");
             txtLName.DataBindings.Add("Text", dtEmp, "lname");
-            txtJobID.DataBindings.Add("Text", dtEmp, "job_id");
             txtJobLvl.DataBindings.Add("Text", dtEmp, "job_lvl");
-            txtJobDesc.DataBindings.Add("Text", dtJobs, "job_desc");
+            txtJobID.DataBindings.Add("Text", dtEmp, "job_id");
+
+
+            comboJobs.DataSource = dtJobs;
+            comboJobs.DisplayMember = "job_desc";
+            comboJobs.ValueMember = "job_id";
+
+            comboJobs.DataBindings.Add("SelectedValue", dtEmp, "job_id");
+
         }
 
         private void numericUpDown_ValueChanged(object sender, EventArgs e)
         {
             int index = (int)numericUpDown.Value;
             BindingContext[dtEmp].Position = index;
-            var jobId = dtEmp.Rows[index]["job_id"];
-            var result = dtJobs.Select($"job_id = {jobId}");
-
-            if (result.Length > 0)
-            {
-                txtJobDesc.Text = result[0]["job_desc"].ToString();
-            }
         }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int index = (int)numericUpDown.Value;
-            var jobId = dtEmp.Rows[index]["job_id"];
-            var result = dtJobs.Select($"job_id = {jobId}");
-            if (result.Length > 0)
-            {
-                result[0]["job_desc"] = txtJobDesc.Text;
-                jobSqlDataAdapter.Update(dtJobs);
-                MessageBox.Show("Job Description Updated Successfully");
-            }
+            this.BindingContext[dtEmp].EndCurrentEdit();
+
+            int r = empSqlDataAdapter.Update(dtEmp);
+
+            MessageBox.Show($"Employee Updated Successfully ---- {r}");
         }
     }
 }
