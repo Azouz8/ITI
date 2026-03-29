@@ -1,0 +1,36 @@
+<html>
+  <head> </head>
+
+  <body style="text-align: center">
+    <div id="header">
+      <img src="dom.jpg" alt="hello..it rains over here:)" />
+    </div>
+    <div id="navigation">
+      <ul id="nav">
+        <li><strong>Memo</strong></li>
+        <li><a href="Articles.html">Articles</a></li>
+        <li><a href="Photos.html">Photos</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Clients.html">Clients</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <script>
+      setTimeout(function () {
+        var img = document.images[0];
+        img.style.float = "right";
+
+        var clone = img.cloneNode(true);
+        clone.style.float = "left";
+
+        document.body.appendChild(clone);
+
+        var nav = document.getElementById("navigation");
+        nav.style.clear = "both";
+        var ul = document.getElementById("nav");
+        ul.style.listStyle = "square";
+      }, 1500);
+    </script>
+  </body>
+</html>

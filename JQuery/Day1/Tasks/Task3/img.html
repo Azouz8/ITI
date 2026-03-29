@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        border: 1px solid red;
+        height: 500px;
+        width: 350px;
+        position: relative;
+      }
+
+      .right-center {
+        position: absolute;
+        top: 225px;
+        right: 0;
+      }
+
+      .left-center {
+        position: absolute;
+        top: 225px;
+        left: 0;
+      }
+
+      .bottom-center {
+        position: absolute;
+        bottom: 0;
+        left: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="icon1.gif" class="left-center" />
+      <img src="icon2.gif" class="right-center" />
+      <img src="TOP.JPG" class="bottom-center" />
+    </div>
+    <br />
+    <input type="button" value="go" onclick="playImg()" />
+    <input type="button" value="stop" onclick="stopImg()" />
+    <script>
+      let interval;
+
+      let rightDir = -1;
+      let rightPos;
+
+      let leftDir = 1;
+      let leftPos = 0;
+
+      let bottomDir = 1;
+      let bottomPos = 0;
+
+      function playImg() {
+        const container = document.querySelector(".container");
+
+        const rightImg = document.querySelector(".right-center");
+        const leftImg = document.querySelector(".left-center");
+        const bottomImg = document.querySelector(".bottom-center");
+
+        const maxX = container.clientWidth - rightImg.clientWidth;
+        const maxY = container.clientHeight - bottomImg.clientHeight;
+
+        rightPos = maxX;
+        rightImg.style.right = "auto";
+        rightImg.style.left = rightPos + "px";
+
+        leftPos = 0;
+        leftImg.style.left = leftPos + "px";
+
+        bottomPos = 0;
+        bottomImg.style.bottom = bottomPos + "px";
+
+        interval = setInterval(function () {
+          rightPos += rightDir * 5;
+          rightImg.style.left = rightPos + "px";
+          if (rightPos <= 0) rightDir = 1;
+          if (rightPos >= maxX) rightDir = -1;
+
+          leftPos += leftDir * 5;
+          leftImg.style.left = leftPos + "px";
+          if (leftPos <= 0) leftDir = 1;
+          if (leftPos >= maxX) leftDir = -1;
+
+          bottomPos += bottomDir * 5;
+          bottomImg.style.bottom = bottomPos + "px";
+          if (bottomPos <= 0) bottomDir = 1;
+          if (bottomPos >= maxY) bottomDir = -1;
+        }, 30);
+      }
+
+      function stopImg() {
+        clearInterval(interval);
+      }
+    </script>
+  </body>
+</html>
