@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1> Change Email Address </h1>
+    <form>
+        <input type="text" pattern="[a-zA-Z]+" required />
+        <span> the required user name may only be a series of alphabitical characters</span>
+        <input type="text" pattern="[a-zA-Z0-9]+@[a-zA-Z]+" required />
+        <span> the required email address may not include any special chars other than '@' </span>
+        <input type="submit" value="Change" />
+    </form>
+</body>
+
+</html>

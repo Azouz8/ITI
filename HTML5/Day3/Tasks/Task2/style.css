@@ -1,0 +1,32 @@
+img {
+    width: 300px;
+    animation-name: pos;
+    animation-duration: 2s;
+}
+img:hover{
+    animation-name: ngv;
+    animation-duration: 2s;
+    opacity: 0;
+}
+
+@keyframes ngv {
+    from{
+        opacity: 1;
+        width: 300px;
+    }
+    to{ 
+        opacity: 0;
+        width: 250px;
+        }
+}
+
+@keyframes pos {
+     from{
+        width: 250px;
+        opacity: 0;
+    }
+    to{ 
+        opacity: 1;
+        width: 300px;
+        }
+}

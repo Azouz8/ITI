@@ -1,0 +1,17 @@
+.c1 {
+    background-color: #ccddee;
+    border:   #555BF6 3px solid;
+    border-radius:30px;
+    text-align: center;
+    width: 250px;
+    position: relative;
+    top:300px;
+    left: 650px;
+    transition: all 1s;
+}
+
+.c1:hover{
+    box-shadow: 6px 6px 5px #555BF6; 
+    background-color: #FCDDEE;
+    transition: all 1s;
+}

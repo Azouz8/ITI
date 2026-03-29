@@ -1,0 +1,44 @@
+.c1 {
+    position: relative;
+}
+
+#circle {
+    width: 200px;
+    height: 200px;
+    background: red;
+    border-radius: 50%;
+}
+
+#triangle-left {
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-right: 100px solid rgb(255, 255, 255);
+    border-bottom: 50px solid transparent;
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    animation: tri 1s infinite linear; 
+}
+
+@keyframes tri {
+    0%, 100% {
+        border-top-width: 50px;
+        border-bottom-width: 50px;
+        top: 50px;
+    }
+    50% {
+        border-top-width: 0px;
+        border-bottom-width: 0px;
+        top: 100px;
+    }
+}
+
+@keyframes c1 {
+    start {
+        left :0px
+    }
+    end {
+        left :100px
+    }
+}
