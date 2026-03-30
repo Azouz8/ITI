@@ -1,4 +1,3 @@
-import e from "express";
 import express from "express";
 import fs from "fs/promises";
 
@@ -15,10 +14,16 @@ const write = async (products) => {
 };
 
 app.get("/products", async (req, res) => {
-  const products = await read();
-  res.status(200).json({
-    data: products,
-  });
+  try {
+    const products = await read();
+    res.status(200).json({
+      data: products,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    });
+  }
 });
 
 const createProduct = (name, price) => {
