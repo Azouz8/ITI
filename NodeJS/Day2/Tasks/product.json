@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1774780926415,
+        "name": "New Product2",
+        "price": "1222"
+    },
+    {
+        "id": 1774780936899,
+        "name": "New Product3",
+        "price": "333"
+    },
+    {
+        "id": 1774782477041,
+        "name": "Modified",
+        "price": "2000"
+    },
+    {
+        "id": 1774870708265,
+        "name": "Product from Postman",
+        "price": "120"
+    }
+]
