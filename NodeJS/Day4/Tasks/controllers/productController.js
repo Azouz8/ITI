@@ -1,94 +1,75 @@
 import Product from '../models/producModel.js';
+import asyncWrapper from '../middleware/asyncWrapper.js';
 import httpStatus from '../utils/httpStatus.js';
+import appError from '../utils/appError.js';
 
-export const getAllProducts = async (req, res) => {
-    try {
+export const getAllProducts = asyncWrapper(
+    async (req, res) => {
         const products = await Product.find();
         res.status(200).json({
             status: httpStatus.SUCCESS,
             data: { products }
         })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
     }
-}
+)
 
-export const getProductById = async (req, res) => {
-    try {
+export const getProductById = asyncWrapper(
+    async (req, res, next) => {
         const product = await Product.findById(req.params.id);
-        if (!product)
-            return res.status(404).json({
-                status: httpStatus.FAIL,
-                message: "Product not found"
-            })
-
+        if (!product) {
+            const error = appError.create("Product not found", 404, httpStatus.FAIL)
+            return next(error)
+        }
         res.status(200).json({
             status: httpStatus.SUCCESS,
             data: { product }
         })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
     }
-}
+)
 
-export const addProduct = async (req, res) => {
-    try {
+
+export const addProduct = asyncWrapper(
+    async (req, res) => {
         const { name, price, category } = req.body;
         const newProd = new Product({
             name, price, category
         });
         await newProd.save();
-        res.status(201).json({
-            status: httpStatus.SUCCESS,
-            data: { product: newProd },
-        })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
+        res.status(201).json(
+            {
+                status: httpStatus.SUCCESS,
+                data: { product: newProd },
+            }
+        )
     }
-}
+)
 
-export const updateProduct = async (req, res) => {
-    try {
+export const updateProduct = asyncWrapper(
+    async (req, res, next) => {
         const { id } = req.params
         const updatedProd = await Product.findByIdAndUpdate(id, req.body, { returnDocument: 'after' })
-        if (!updatedProd)
-            return res.status(404).json({
-                status: httpStatus.FAIL,
-                message: "Product not found"
-            })
+        if (!updatedProd) {
+            const error = appError.create("Product not found", 404, httpStatus.FAIL)
+            return next(error);
+        }
         res.status(200).json({
             status: httpStatus.SUCCESS,
             data: { product: updatedProd },
         })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
     }
-}
+)
 
-export const deleteProduct = async (req, res) => {
-    try {
+export const deleteProduct = asyncWrapper(
+    async (req, res, next) => {
         const { id } = req.params
         const product = await Product.findByIdAndDelete(id)
-        if (!product)
-            return res.status(404).json({
-                status: httpStatus.FAIL,
-                message: "Product not found"
-            })
+        if (!product) {
+            const error = appError.create("Product not found", 404, httpStatus.FAIL)
+            return next(error);
+        }
         res.status(200).json({
             status: httpStatus.SUCCESS,
             data: null
         })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
     }
-}
+)

@@ -1,29 +1,25 @@
+import asyncWrapper from '../middleware/asyncWrapper.js';
 import Category from '../models/categoryModel.js';
 import Product from '../models/producModel.js';
+import appError from '../utils/appError.js';
 import httpStatus from '../utils/httpStatus.js';
 
-export const getAllCategories = async (req, res) => {
-    try {
+export const getAllCategories = asyncWrapper(
+    async (req, res) => {
         const categories = await Category.find();
         res.status(200).json({
             status: httpStatus.SUCCESS,
             data: { categories }
         })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
     }
-}
+)
 
-export const addCategory = async (req, res) => {
-    try {
+export const addCategory = asyncWrapper(
+    async (req, res, next) => {
         const { name, description } = req.body
         if (!name) {
-            return res.status(404).json({
-                status: httpStatus.FAIL,
-                message: "name is required"
-            })
+            const error = appError.create("Name is required", 404, httpStatus.FAIL)
+            return next(error);
         }
         const categroy = new Category({
             name, description
@@ -33,22 +29,16 @@ export const addCategory = async (req, res) => {
             status: httpStatus.SUCCESS,
             data: { categroy },
         })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
     }
-}
+)
 
 
-export const getAllProductsUnderCategory = async (req, res) => {
-    try {
+export const getAllProductsUnderCategory = asyncWrapper(
+    async (req, res, next) => {
         const { id } = req.params;
         if (!id) {
-            return res.status(404).json({
-                status: httpStatus.FAIL,
-                message: "categoryId is required"
-            })
+            const error = appError.create("CategoryId is required", 404, httpStatus.FAIL)
+            return next(error)
         }
         const productsByCategory = await Product.find({ category: id }).populate("category")
         res.status(200).json({
@@ -57,56 +47,39 @@ export const getAllProductsUnderCategory = async (req, res) => {
                 products: productsByCategory
             }
         })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
     }
-}
+)
 
-export const updateCategory = async (req, res) => {
-    try {
+export const updateCategory = asyncWrapper(
+    async (req, res, next) => {
         const { id } = req.params;
         if (!id) {
-            return res.status(404).json({
-                status: httpStatus.FAIL,
-                message: "categoryId is required"
-            })
+            const error = appError.create("CategoryId is required", 404, httpStatus.FAIL)
+            return next(error)
         }
         const updatedCategory = await Category.findByIdAndUpdate(id, req.body, { returnDocument: 'after' })
         if (!updatedCategory) {
-            return res.status(404).json({
-                status: httpStatus.FAIL,
-                message: "Category not found"
-            })
+            const error = appError.create("Category not found", 404, httpStatus.FAIL)
+            return next(error)
         }
         res.status(200).json({
             status: httpStatus.SUCCESS,
             data: { category: updatedCategory },
         })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
     }
-}
+)
 
-export const deleteCategory = async (req, res) => {
-    try {
+export const deleteCategory = asyncWrapper(
+    async (req, res, next) => {
         const { id } = req.params
         const category = await Category.findByIdAndDelete(id)
-        if (!category)
-            return res.status(404).json({
-                status: httpStatus.FAIL,
-                message: "Category not found"
-            })
+        if (!category) {
+            const error = appError.create("Category not found", 404, httpStatus.FAIL)
+            return next(error)
+        }
         res.status(200).json({
             status: httpStatus.SUCCESS,
             data: null
         })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
     }
-}
+)
