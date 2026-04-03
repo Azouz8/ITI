@@ -36,6 +36,10 @@ const userSchema = new Schema({
         type: String,
         enum: ["admin", "user"],
         default: "user"
+    },
+    avatar: {
+        type: String,
+        default: "uploads/profile.jpg"
     }
 })
 

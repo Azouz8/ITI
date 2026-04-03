@@ -53,7 +53,8 @@ export const registerUser = asyncWrapper(
             lastName,
             age,
             email,
-            password } = req.body
+            password,
+            role } = req.body
         if (!firstName || !lastName || !age || !email || !password) {
             const error = appError.create("Please enter the missing fields", 404, httpStatus.FAIL)
             return next(error)
@@ -68,8 +69,10 @@ export const registerUser = asyncWrapper(
             firstName,
             lastName,
             age,
-            email,
-            password: hashedPass
+            email,  
+            password: hashedPass,
+            role,
+            avatar: req.file.filename
         })
         const token = await generateJWT({ email: newUser.email, id: newUser._id, role: newUser.role })
         newUser.token = token
