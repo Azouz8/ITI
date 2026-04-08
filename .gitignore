@@ -510,3 +510,6 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+dist/
+*.js.map
+tsconfig.json
