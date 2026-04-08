@@ -1,3 +1,7 @@
 [submodule "SWE/Cinema-Ticket-Reservation-System-main"]
 	path = SWE/Cinema-Ticket-Reservation-System-main
 	url = https://github.com/YoussefHanna64-bit/Cinema-Ticket-Reservation-System
+
+[submodule "Node-Ecommerce-Platform"]
+	path = NodeJS/Project/Node-Ecommerce-Platform
+	url = https://github.com/YoussefHanna64-bit/Node-Ecommerce-Platform.git
