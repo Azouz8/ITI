@@ -1,0 +1,20 @@
+details {
+  margin-bottom: 1rem;
+}
+
+summary {
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.summary-line {
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+}

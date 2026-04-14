@@ -1,0 +1,49 @@
+.task-card {
+  width: 95%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #70809040;
+  margin: 16px auto;
+}
+
+.left-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.left-col .title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.left-col .description {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.right-col {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.right-col .date {
+  margin: 0;
+  font-size: 13px;
+  color: #888;
+}
