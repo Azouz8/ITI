@@ -1,6 +1,9 @@
 .task-card {
   width: 95%;
   box-sizing: border-box;
+  border-color: yello;
+  border-style: solid;
+  border-width: 2px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -46,4 +49,15 @@
   margin: 0;
   font-size: 13px;
   color: #888;
+}
+
+#tagDiv{
+  background-color: #8f8d8d;
+  padding: 8px;
+  border-radius: 16px;
+}
+.right-col .tag {
+  margin: 0;
+  font-size: 13px;
+  color: white;
 }

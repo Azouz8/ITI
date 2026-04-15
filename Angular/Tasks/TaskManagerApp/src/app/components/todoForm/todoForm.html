@@ -1,11 +1,29 @@
 <div>
     <div id="formID">
-        <input type="text" placeholder="Title">
-        <input type="text" placeholder="Description">
-        <input type="text" placeholder="Priority">
-        <input type="text" placeholder="Category">
-        <input type="text" placeholder="Tag">
-        <input type="date">
-        <input type="button" value="Add">
+        <input type="text" placeholder="Title" [(ngModel)]="card.title">
+        <input type="text" placeholder="Description" [(ngModel)]="card.description">
+        <label for="priority">Priority</label>
+        <select id="priority" [(ngModel)]="card.priority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+        <label for="category">Category</label>
+        <select id="category" [(ngModel)]="card.category">
+            <option value="Sports">Sports</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Media">Media</option>
+        </select>
+        <label for="tag">Tag</label>
+        <select id="tag" [(ngModel)]="card.tag">
+            <option value="Tag1">Tag1</option>
+            <option value="Tag2">Tag2</option>
+            <option value="Tag3">Tag3</option>
+        </select>
+        <!-- <input type="text" placeholder="Priority" [(ngModel)]="card.priority"> -->
+        <!-- <input type="text" placeholder="Category" [(ngModel)]="card.category"> -->
+        <!-- <input type="text" placeholder="Tag" [(ngModel)]="card.tag"> -->
+        <input type="date" [(ngModel)]="card.date">
+        <input type="button" value="Add" (click)="saveData()">
     </div>
 </div>

@@ -1,0 +1,11 @@
+<div class="carousel">
+    <input type="button" value="<" (click)="moveBackward()">
+    <img [src]="imgs[current]" alt="no image" srcset="">
+    <input type="button" value=">" (click)="moveForward()">
+</div>
+<div class="indicator">
+    <div [class]="current == 0? 'activeDot' : 'notActiveDot'" ></div>
+    <div [class]="current == 1? 'activeDot' : 'notActiveDot'"></div>
+    <div [class]="current == 2? 'activeDot' : 'notActiveDot'"></div>
+    <div [class]="current == 3? 'activeDot' : 'notActiveDot'"></div>
+</div>
