@@ -20,10 +20,12 @@
             <option value="Tag2">Tag2</option>
             <option value="Tag3">Tag3</option>
         </select>
-        <!-- <input type="text" placeholder="Priority" [(ngModel)]="card.priority"> -->
-        <!-- <input type="text" placeholder="Category" [(ngModel)]="card.category"> -->
-        <!-- <input type="text" placeholder="Tag" [(ngModel)]="card.tag"> -->
         <input type="date" [(ngModel)]="card.date">
+        @if(card.id == ""){
         <input type="button" value="Add" (click)="saveData()">
+        }
+        @else {
+        <input type="button" value="Save" (click)="saveEditedCard()">
+        }
     </div>
 </div>

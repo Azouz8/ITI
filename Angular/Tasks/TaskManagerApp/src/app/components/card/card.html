@@ -1,13 +1,22 @@
-<div class="task-card">
+<div class="task-card" [class.border-high]="cardData.priority === 'High'"
+  [class.border-medium]="cardData.priority === 'Medium'" [class.border-low]="cardData.priority === 'Low'">
   <div class="left-col">
-    <p class="title">This is Task Title</p>
-    <p class="description">This is Task Description...</p>
+    <p class="title" [class.completed]="cardData.isCompleted" [class.notCompleted]="!cardData.isCompleted">
+      {{cardData.title}} </p>
+    @if(!cardData.isCompleted){
+    <p class="description">{{cardData.description}}</p>
+    }
   </div>
   <div class="right-col">
     <div id="tagDiv">
-      <p class="tag">Coding</p>
+      <p class="tag">{{cardData.tag}}</p>
     </div>
-    <p class="date">today</p>
-    <input type="checkbox">
+    <p class="date">{{cardData.date}}</p>
+    <fa-icon [icon]="faEdit" class="edit-btn" (click)="onEdit()">
+    </fa-icon>
+    <fa-icon [icon]="faTrash" class="delete-btn" (click)="onDelete()">
+    </fa-icon>
+    <input type="checkbox" [checked]="cardData.isCompleted" (click)="toggleTaskStatus()">
+
   </div>
 </div>

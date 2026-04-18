@@ -1,6 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 import { Card } from '../card/card';
 import { FormsModule } from '@angular/forms';
+import { v4 as uuid } from 'uuid';
+import { CardData } from '../models/cardModel';
+import { emptyCard } from '../../utils/helper';
+import { NotificationModel } from '../models/notificationModel';
+
+function generateId() {
+  const id = uuid().split('-')[0];
+  return id;
+}
 
 @Component({
   templateUrl: './todoForm.html',
@@ -9,37 +18,34 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
 })
 export class TodoForm {
-  card: Card = new Card();
-  todoList: Card[] = [];
-
-  // getTitle(e: Event) {
-  //   let elem = e.target as HTMLInputElement;
-  //   this.card.title = elem.value;
-  // }
-  // getDescription(e: Event) {
-  //   let elem = e.target as HTMLInputElement;
-  //   this.card.description = elem.value;
-  // }
-  // getPriority(e: Event) {
-  //   let elem = e.target as HTMLInputElement;
-  //   this.card.priority = elem.value;
-  // }
-  // getCategory(e: Event) {
-  //   let elem = e.target as HTMLInputElement;
-  //   this.card.category = elem.value;
-  // }
-  // getTag(e: Event) {
-  //   let elem = e.target as HTMLInputElement;
-  //   this.card.tag = elem.value;
-  // }
-  // getDate(e: Event) {
-  //   let elem = e.target as HTMLInputElement;
-  //   this.card.date = elem.value;
-  // }
+  @Input()
+  card: CardData = emptyCard();
+  @Output()
+  sendCardData = new EventEmitter<CardData>();
+  @Output()
+  updateCard = new EventEmitter<CardData>();
+  @Output()
+  sendNotification = new EventEmitter<NotificationModel>();
 
   saveData() {
-    this.todoList.push(this.card);
-    console.log(this.todoList);
-    this.card = new Card();
+    let newCard: CardData = { ...this.card, id: generateId() };
+    for (let c in newCard) {
+      let key = c as keyof CardData;
+      if (newCard[key] === '') {
+        this.sendNotification.emit({
+          message: key.at(0)!.toUpperCase().concat(key.slice(1, key.length)) + ' Field is required',
+          type: 'error',
+        });
+        return;
+      }
+    }
+    this.sendCardData.emit(newCard);
+    this.sendNotification.emit({ message: 'Task Added Successfully!', type: 'info' });
+    this.card = emptyCard();
+  }
+  saveEditedCard() {
+    this.updateCard.emit(this.card);
+    this.sendNotification.emit({ message: 'Task Updated Successfully!', type: 'info' });
+    this.card = emptyCard();
   }
 }

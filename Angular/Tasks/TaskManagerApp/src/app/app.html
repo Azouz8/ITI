@@ -1,7 +1,10 @@
-<div>
+<div class="app">
     <app-header></app-header>
     <app-carousel></app-carousel>
-    <app-todoForm></app-todoForm>
-    <app-cardList></app-cardList>
+    <app-notification [notification]="notification" />
+    <app-todoForm (sendCardData)="getCard($event)" (sendNotification)="getNotification($event)" [card]="editCard"
+        (updateCard)="updateCard($event)"></app-todoForm>
+    <app-cardList [todoList]="todoList" (editTaskEvent)="editTask($event)"
+        (notification)="getNotification($event)"></app-cardList>
     <app-footer></app-footer>
 </div>

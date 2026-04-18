@@ -18,3 +18,13 @@ summary {
   height: 1px;
   background: #ddd;
 }
+
+.noTasks {
+  text-align: center;
+  background-color: #708090;
+  border-radius: 16px;
+  width: 200px;
+  color: white;
+  padding: 4px;
+  margin-inline: auto ;
+}

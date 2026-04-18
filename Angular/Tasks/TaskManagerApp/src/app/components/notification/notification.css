@@ -1,0 +1,23 @@
+.info {
+  background-color: green;
+  
+}
+.warning {
+  background-color: rgb(197, 197, 38);
+}
+.error {
+  background-color: rgb(202, 27, 27);
+}
+
+div {
+  position: fixed;
+  top: 170px;
+  right: 35px;
+  z-index: 1000;
+  padding-inline: 12px;
+  border-radius: 16px;
+}
+
+div p {
+    color: white;
+}
