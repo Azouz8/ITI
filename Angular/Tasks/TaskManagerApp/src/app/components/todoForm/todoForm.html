@@ -1,27 +1,27 @@
 <div>
     <div id="formID">
-        <input type="text" placeholder="Title" [(ngModel)]="card.title">
-        <input type="text" placeholder="Description" [(ngModel)]="card.description">
+        <input type="text" placeholder="Title" [(ngModel)]="task.title">
+        <input type="text" placeholder="Description" [(ngModel)]="task.description">
         <label for="priority">Priority</label>
-        <select id="priority" [(ngModel)]="card.priority">
+        <select id="priority" [(ngModel)]="task.priority">
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
         </select>
         <label for="category">Category</label>
-        <select id="category" [(ngModel)]="card.category">
+        <select id="category" [(ngModel)]="task.category">
             <option value="Sports">Sports</option>
             <option value="Entertainment">Entertainment</option>
             <option value="Media">Media</option>
         </select>
         <label for="tag">Tag</label>
-        <select id="tag" [(ngModel)]="card.tag">
+        <select id="tag" [(ngModel)]="task.tag">
             <option value="Tag1">Tag1</option>
             <option value="Tag2">Tag2</option>
             <option value="Tag3">Tag3</option>
         </select>
-        <input type="date" [(ngModel)]="card.date">
-        @if(card.id == ""){
+        <input type="date" [(ngModel)]="task.date">
+        @if(task.id == ""){
         <input type="button" value="Add" (click)="saveData()">
         }
         @else {

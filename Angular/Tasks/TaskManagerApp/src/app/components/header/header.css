@@ -23,3 +23,7 @@ p {
   justify-content: center;
   align-items: self-end;
 }
+#counter{
+  width: 250px;
+  padding: 16px;
+}

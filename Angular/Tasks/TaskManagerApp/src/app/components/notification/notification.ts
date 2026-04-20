@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NotificationModel } from '../models/notificationModel';
+import { emptyNotification } from '../../utils/helper';
 
 @Component({
   selector: 'app-notification',
@@ -9,8 +10,5 @@ import { NotificationModel } from '../models/notificationModel';
 })
 export class Notification {
   @Input()
-  notification: NotificationModel = {
-    message: '',
-    type: 'info',
-  };
+  notification: NotificationModel = emptyNotification();
 }

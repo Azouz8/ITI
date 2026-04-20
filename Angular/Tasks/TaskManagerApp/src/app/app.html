@@ -2,9 +2,10 @@
     <app-header></app-header>
     <app-carousel></app-carousel>
     <app-notification [notification]="notification" />
-    <app-todoForm (sendCardData)="getCard($event)" (sendNotification)="getNotification($event)" [card]="editCard"
-        (updateCard)="updateCard($event)"></app-todoForm>
-    <app-cardList [todoList]="todoList" (editTaskEvent)="editTask($event)"
-        (notification)="getNotification($event)"></app-cardList>
+    <app-todoForm (sendTaskEvent)="getCard($event)" [task]="taskToBeUpdated"
+        (updateTaskEvent)="passTaskToBeUpdated($event)"
+        (sendNotificationEvent)="getNotification($event)"></app-todoForm>
+    <app-cardList [task]="task" (updateTaskEvent)="passTaskToBeUpdated($event)" (notification)="getNotification($event)"
+        [updatedTask]="taskToBeUpdated"></app-cardList>
     <app-footer></app-footer>
 </div>

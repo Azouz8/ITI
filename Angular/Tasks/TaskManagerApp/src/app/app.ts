@@ -4,8 +4,8 @@ import { Footer } from './components/footer/footer';
 import { TodoForm } from './components/todoForm/todoForm';
 import { CardList } from './components/cardList/cardList';
 import { Carousel } from './components/carousel/carousel';
-import { CardData } from './components/models/cardModel';
-import { emptyCard, emptyNotification } from './utils/helper';
+import { TaskData } from './components/models/cardModel';
+import { emptyTask, emptyNotification } from './utils/helper';
 import { Notification } from './components/notification/notification';
 import { NotificationModel } from './components/models/notificationModel';
 
@@ -16,27 +16,20 @@ import { NotificationModel } from './components/models/notificationModel';
   imports: [Header, Footer, TodoForm, CardList, Carousel, Notification],
 })
 export class App {
-  todoList: CardData[] = [];
-  editCard: CardData = emptyCard();
+  task: TaskData = emptyTask();
+  taskToBeUpdated: TaskData = emptyTask();
   notification: NotificationModel = emptyNotification();
-  getCard(card: CardData) {
-    this.todoList.push(card);
-    console.log(this.todoList);
+
+  getCard(task: TaskData) {
+    this.task = task;
   }
 
-  editTask(card: CardData) {
-    console.log(this.todoList);
-    this.editCard = card;
+  passTaskToBeUpdated(task: TaskData) {
+    this.taskToBeUpdated = task;
   }
-  updateCard(card: CardData) {
-    const index = this.todoList.findIndex((c) => c.id === card.id);
-    if (index !== -1) {
-      this.todoList[index] = card;
-    }
-  }
+
   getNotification(notification: NotificationModel) {
-    this.notification.message = notification.message;
-    this.notification.type = notification.type;
+    this.notification = notification;
     setTimeout(() => {
       this.notification.message = '';
     }, 3000);

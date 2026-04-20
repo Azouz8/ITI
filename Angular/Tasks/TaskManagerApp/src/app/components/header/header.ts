@@ -5,4 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {}
+export class Header {
+  counter: number = 0;
+
+  ngOnInit() {
+    setInterval(() => {
+      this.counter++;
+    }, 1000);
+  }
+}

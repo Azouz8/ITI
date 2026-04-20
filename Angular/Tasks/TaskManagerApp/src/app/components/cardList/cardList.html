@@ -1,48 +1,51 @@
 <div id="cardListId">
     <details open>
         <summary>All Tasks <span class="summary-line"></span></summary>
-        @if (todoList.length == 0) {
+        @if (taskList.length == 0) {
         <p class="noTasks">No Tasks Added Yet.</p>
         }@else {
-        @for(card of todoList; track card.id){
+        @for(card of taskList; track card.id){
         <app-card [cardData]="card" (delete)="deleteTask($event)" (notification)="getNotification($event)"
-            (edit)="editTask($event)"></app-card>
+            (edit)="passTaskToBeUpdated($event)" (statusChanged)="checkIsAllDone()"></app-card>
         }
         }
     </details>
-    <details [open]="todoList.length>0">
+    @if(!isAllDone){
+    <details [open]="taskList.length>0">
         <summary>Not Done <span class="summary-line"></span></summary>
-        @if (todoList.length == 0) {
+        @if (taskList.length == 0) {
         <p class="noTasks">No Tasks Added Yet.</p>
         }@else {
-        @for(card of todoList; track card.id){
+        @for(card of taskList; track card.id){
         @if (!card.isCompleted) {
         <app-card [cardData]="card" (delete)="deleteTask($event)" (notification)="getNotification($event)"
-            (edit)="editTask($event)"></app-card>
+            (edit)="passTaskToBeUpdated($event)" (statusChanged)="checkIsAllDone()"></app-card>
         }
-        }
-        }
-    </details>
-    @for(cat of categories; track cat){
-    <details open>
-        <summary>{{cat}} <span class="summary-line"></span></summary>
-        @for(card of todoList; track card.id){
-        @if (!card.isCompleted && card.category == cat) {
-        <app-card [cardData]="card" (delete)="deleteTask($event)" (notification)="getNotification($event)"
-            (edit)="editTask($event)"></app-card>
         }
         }
     </details>
     }
-    <details [open]="todoList.length>0">
+    @for(cat of categories; track cat){
+    <details open>
+        <summary>{{cat}} <span class="summary-line"></span></summary>
+        @for(card of taskList; track card.id){
+        @if (!card.isCompleted && card.category == cat) {
+        <app-card [cardData]="card" (delete)="deleteTask($event)" (notification)="getNotification($event)"
+            (edit)="passTaskToBeUpdated($event)" (statusChanged)="checkIsAllDone()"></app-card>
+        }
+        }
+    </details>
+    }
+
+    <details [open]="taskList.length>0">
         <summary>Completed <span class="summary-line"></span></summary>
-        @if (todoList.length == 0) {
+        @if (taskList.length == 0) {
         <p class="noTasks">No Tasks Completed Yet.</p>
         }@else {
-        @for(card of todoList; track card.id){
+        @for(card of taskList; track card.id){
         @if (card.isCompleted) {
         <app-card [cardData]="card" (delete)="deleteTask($event)" (notification)="getNotification($event)"
-            (edit)="editTask($event)"></app-card>
+            (edit)="passTaskToBeUpdated($event)" (statusChanged)="checkIsAllDone()"></app-card>
         }
         }
         }

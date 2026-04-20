@@ -1,6 +1,6 @@
 import { notificationType } from '../types/notificationType';
 
-export function emptyCard() {
+export function emptyTask() {
   return {
     id: '',
     title: '',
