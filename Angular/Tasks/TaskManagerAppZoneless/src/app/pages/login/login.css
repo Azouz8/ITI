@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#loginFormID {
+  background-color: rgba(108, 117, 125, 0.6);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow:
+    0 8px 15px rgba(0, 0, 0, 0.2),
+    0 20px 30px rgba(0, 0, 0, 0.3);
+  width: 400px;
+}
+
+.inputField {
+  margin-bottom: 15px;
+}
+
+#loginFormID input[type='submit'] {
+  width: 100%;
+  margin-bottom: 15px;
+}
+a {
+  text-decoration: none;
+}
+
+#RememberMeID {
+  display: flex;
+}

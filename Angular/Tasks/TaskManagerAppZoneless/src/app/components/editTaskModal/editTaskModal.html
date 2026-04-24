@@ -1,0 +1,38 @@
+<div
+  class="modal d-block show"
+  tabindex="-1"
+  role="dialog"
+  style="background-color: rgba(0, 0, 0, 0.5)"
+>
+  <div
+    class="modal-dialog"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <h5 class="modal-title">Edit Task</h5>
+        <button
+          type="button"
+          class="btn-close pe-3"
+          (click)="close()"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <app-form
+          [isEditMode]="true"
+          (saved)="close()"
+        />
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="close()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

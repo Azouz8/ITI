@@ -1,0 +1,81 @@
+<div class="container">
+  <form
+    [formGroup]="form"
+    id="taskFormID"
+  >
+    <div class="inputField">
+      <input
+        type="text"
+        placeholder="Title"
+        class="form-control"
+        formControlName="title"
+      />
+      @if (form.get('title')?.invalid && form.get('title')?.touched) {
+        <small class="text-danger">This Field is required</small>
+      }
+    </div>
+    <div class="inputField">
+      <input
+        type="text"
+        placeholder="Description"
+        class="form-control"
+        formControlName="description"
+      />
+      @if (form.get('description')?.invalid && form.get('description')?.touched) {
+        <small class="text-danger">This Field is required</small>
+      }
+    </div>
+    <label for="priority">Priority</label>
+    <select
+      id="priority"
+      class="form-control"
+      formControlName="priority"
+    >
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+    <label for="category">Category</label>
+    <select
+      id="category"
+      class="form-control"
+      formControlName="category"
+    >
+      <option value="Sports">Sports</option>
+      <option value="Entertainment">Entertainment</option>
+      <option value="Media">Media</option>
+    </select>
+    <label for="tag">Tag</label>
+    <select
+      id="tag"
+      class="form-control"
+      formControlName="tag"
+    >
+      <option value="Tag1">Tag1</option>
+      <option value="Tag2">Tag2</option>
+      <option value="Tag3">Tag3</option>
+    </select>
+    <input
+      type="date"
+      class="form-control"
+      formControlName="date"
+    />
+    @if (!isEditMode) {
+      <input
+        type="button"
+        value="Add"
+        class="btn btn-secondary"
+        (click)="addTask()"
+        [disabled]="form.invalid"
+      />
+    } @else {
+      <input
+        type="button"
+        value="Save Changes"
+        class="btn btn-primary"
+        (click)="saveEdit()"
+        [disabled]="form.invalid"
+      />
+    }
+  </form>
+</div>

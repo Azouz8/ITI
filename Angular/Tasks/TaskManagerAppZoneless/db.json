@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "firstName": "ali",
+      "lastName": "azouz",
+      "email": "ali@gmail.com",
+      "password": "123123123",
+      "age": "22",
+      "gender": "Male",
+      "id": "K9eFx0NsqLg"
+    },
+    {
+      "firstName": "New",
+      "lastName": "Account",
+      "email": "newuser@gmail.com",
+      "password": "123123123",
+      "age": "23",
+      "gender": "Male",
+      "id": "mcURQoNCeu8"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "Gymmmmmm",
+      "description": "Going to the gym",
+      "priority": "High",
+      "category": "Sports",
+      "tag": "Tag3",
+      "date": "2026-04-24",
+      "isCompleted": false,
+      "userId": "K9eFx0NsqLg",
+      "id": "fRaMwRMjAc0"
+    },
+    {
+      "title": "Another Task",
+      "description": "New Task for User1",
+      "priority": "Medium",
+      "category": "Entertainment",
+      "tag": "Tag1",
+      "date": "2026-04-24",
+      "isCompleted": false,
+      "userId": "K9eFx0NsqLg",
+      "id": "GPOq8q5CREg"
+    },
+    {
+      "title": "New Task For New User",
+      "description": "asd",
+      "priority": "Medium",
+      "category": "Sports",
+      "tag": "Tag1",
+      "date": "2026-04-24",
+      "isCompleted": false,
+      "userId": "mcURQoNCeu8",
+      "id": "9UJUbDUU9mI"
+    }
+  ]
+}

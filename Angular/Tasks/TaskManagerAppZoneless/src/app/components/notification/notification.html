@@ -1,0 +1,13 @@
+@if (notification().message.length > 0) {
+  <div
+    class="alert"
+    [ngClass]="{
+      'alert-success': notification().type === 'info',
+      'alert-warning': notification().type === 'warning',
+      'alert-danger': notification().type === 'error',
+    }"
+    role="alert"
+  >
+    {{ notification().message }}
+  </div>
+}

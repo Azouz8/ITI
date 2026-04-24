@@ -1,0 +1,49 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#taskFormID {
+  background-color: rgba(108, 117, 125, 0.6);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow:
+    0 8px 15px rgba(0, 0, 0, 0.2),
+    0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+#taskFormID select,
+#taskFormID label {
+  margin-bottom: 15px;
+}
+
+.inputField {
+  margin-bottom: 15px;
+}
+
+#taskFormID label {
+  display: block;
+  color: white;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+#taskFormID input[type='text'],
+#taskFormID input[type='date'],
+#taskFormID select {
+  width: 100%;
+}
+
+#taskFormID input[type='button'] {
+  width: 100%;
+  margin-top: 15px;
+}

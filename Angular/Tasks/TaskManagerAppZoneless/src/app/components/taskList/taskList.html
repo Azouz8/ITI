@@ -1,0 +1,141 @@
+<div class="container my-5">
+  <div
+    class="accordion"
+    id="tasksAccordion"
+  >
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#allTasksCollapse"
+          aria-expanded="true"
+          aria-controls="allTasksCollapse"
+        >
+          All Tasks <span class="summary-line"></span>
+        </button>
+      </h2>
+      <div
+        id="allTasksCollapse"
+        class="accordion-collapse show"
+      >
+        <div class="accordion-body">
+          @if (tasks().length === 0) {
+            <p class="text-center">No Tasks Added Yet.</p>
+          } @else {
+            @for (task of tasks(); track task.id) {
+              <app-task
+                [task]="task"
+                (editClicked)="openEditModal($event)"
+              ></app-task>
+            }
+          }
+        </div>
+      </div>
+    </div>
+    @if (tasks().some((t) => !t.isCompleted)) {
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button collapsed bg-seconda"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#notDoneCollapse"
+            aria-expanded="false"
+            aria-controls="notDoneCollapse"
+          >
+            Not Done <span class="summary-line"></span>
+          </button>
+        </h2>
+        <div
+          id="notDoneCollapse"
+          class="accordion-collapse collapse"
+        >
+          <div class="accordion-body">
+            @if (tasks().length === 0) {
+              <p class="text-center">No Tasks Added Yet.</p>
+            } @else {
+              @for (task of tasks(); track task.id) {
+                @if (!task.isCompleted) {
+                  <app-task
+                    [task]="task"
+                    (editClicked)="openEditModal($event)"
+                  ></app-task>
+                }
+              }
+            }
+          </div>
+        </div>
+      </div>
+    }
+    @for (cat of categories(); track cat) {
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button collapsed bg-seconda"
+            type="button"
+            data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#Cat-' + cat"
+            aria-expanded="false"
+            [attr.aria-controls]="'Cat-' + cat"
+          >
+            {{ cat }} <span class="summary-line"></span>
+          </button>
+        </h2>
+        <div
+          [id]="'Cat-' + cat"
+          class="accordion-collapse show"
+        >
+          <div class="accordion-body">
+            @for (task of tasks(); track task.id) {
+              @if (!task.isCompleted && task.category == cat) {
+                <app-task
+                  [task]="task"
+                  (editClicked)="openEditModal($event)"
+                ></app-task>
+              }
+            }
+          </div>
+        </div>
+      </div>
+    }
+
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#completedCollapse"
+          aria-expanded="false"
+          aria-controls="completedCollapse"
+        >
+          Completed <span class="summary-line"></span>
+        </button>
+      </h2>
+      <div
+        id="completedCollapse"
+        class="accordion-collapse collapse"
+      >
+        <div class="accordion-body">
+          @if (tasks().length == 0) {
+            <p class="text-center">No Tasks Completed Yet.</p>
+          } @else {
+            @for (task of tasks(); track task.id) {
+              @if (task.isCompleted) {
+                <app-task
+                  [task]="task"
+                  (editClicked)="openEditModal($event)"
+                ></app-task>
+              }
+            }
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@if (isModalOpen) {
+  <app-edit-task-modal (closeModal)="closeEditModal()" />
+}

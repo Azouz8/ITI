@@ -1,0 +1,8 @@
+.accordion {
+  --bs-accordion-active-bg: #70809099;
+  --bs-accordion-active-color: #ffffff;
+}
+
+.accordion-button:not(.collapsed)::after {
+  filter: brightness(0) invert(1);
+}

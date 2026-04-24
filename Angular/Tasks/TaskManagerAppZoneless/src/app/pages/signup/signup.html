@@ -1,0 +1,141 @@
+<div class="container">
+  <form
+    [formGroup]="form"
+    id="signUpFormID"
+    (submit)="onSubmit()"
+  >
+    <h4 class="text-light text-center mb-3 fw-bold">Sign Up</h4>
+
+    <div class="inputField">
+      <input
+        type="text"
+        placeholder="First Name"
+        class="form-control"
+        formControlName="firstName"
+      />
+      @if (form.get('firstName')?.invalid && form.get('firstName')?.touched) {
+        <p class="text-danger small">
+          @if (form.get('firstName')?.errors?.['required']) {
+            * First name is required.
+          } @else if (form.get('firstName')?.errors?.['minlength']) {
+            * Must be at least 3 characters long.
+          }
+        </p>
+      }
+    </div>
+    <div class="inputField">
+      <input
+        type="text"
+        placeholder="Last Name"
+        class="form-control"
+        formControlName="lastName"
+      />
+      @if (form.get('lastName')?.invalid && form.get('lastName')?.touched) {
+        <p class="text-danger small">
+          @if (form.get('lastName')?.errors?.['required']) {
+            * Last name is required.
+          } @else if (form.get('lastName')?.errors?.['minlength']) {
+            * Must be at least 3 characters long.
+          }
+        </p>
+      }
+    </div>
+    <div class="inputField">
+      <input
+        type="email"
+        placeholder="Email"
+        class="form-control"
+        formControlName="email"
+      />
+      @if (form.get('email')?.invalid && form.get('email')?.touched) {
+        <p class="text-danger small">
+          @if (form.get('email')?.errors?.['required']) {
+            * Email is required.
+          } @else if (form.get('email')?.errors?.['email']) {
+            * Please Enter a valid Email Address.
+          }
+        </p>
+      }
+    </div>
+    <div class="inputField">
+      <input
+        type="password"
+        placeholder="Password"
+        class="form-control"
+        formControlName="password"
+      />
+      @if (form.get('password')?.invalid && form.get('password')?.touched) {
+        <p class="text-danger small">
+          @if (form.get('password')?.errors?.['required']) {
+            * Password is required.
+          } @else if (form.get('password')?.errors?.['minlength']) {
+            * Must be at least 8 characters long.
+          }
+        </p>
+      }
+    </div>
+    <div class="inputField">
+      <input
+        type="password"
+        placeholder="Confirm Password"
+        class="form-control"
+        formControlName="confirmPassword"
+      />
+      @if (
+        (form.get('confirmPassword')?.invalid || form.hasError('passwordMismatch')) &&
+        form.get('confirmPassword')?.touched
+      ) {
+        <p class="text-danger small">
+          @if (form.get('confirmPassword')?.hasError('required')) {
+            * Confirmed Password is required.
+          } @else if (form.hasError('passwordMismatch')) {
+            * Passwords don't match.
+          }
+        </p>
+      }
+    </div>
+    <div class="inputField d-flex align-items-center justify-content-center gap-2">
+      <input
+        type="text"
+        placeholder="Age"
+        class="form-control"
+        formControlName="age"
+      />
+      <select
+        id="gender"
+        class="form-control"
+        formControlName="gender"
+      >
+        <option
+          value="Male"
+          selected
+        >
+          Male
+        </option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+    @if (form.get('age')?.invalid && form.get('age')?.touched) {
+      <p class="text-danger small">
+        @if (form.get('age')?.errors?.['required']) {
+          * Age is required.
+        } @else if (form.get('age')?.errors?.['typeMismatch']) {
+          * Age must be a number.
+        } @else if (form.get('age')?.errors?.['min']) {
+          * Min age is 6.
+        } @else {
+          * Max age is 99
+        }
+      </p>
+    }
+    <input
+      type="submit"
+      value="Submit"
+      class="btn btn-secondary"
+      [disabled]="form.invalid"
+    />
+    <a routerLink="/login">
+      <p class="text-light text-center mb-3">Already have an account?</p>
+    </a>
+  </form>
+</div>

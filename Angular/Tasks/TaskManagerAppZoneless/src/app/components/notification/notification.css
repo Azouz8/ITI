@@ -1,0 +1,12 @@
+div {
+  position: fixed;
+  top: 170px;
+  right: 35px;
+  z-index: 1000;
+  padding-inline: 12px;
+  border-radius: 16px;
+}
+
+/* div p {
+    color: white;
+} */
