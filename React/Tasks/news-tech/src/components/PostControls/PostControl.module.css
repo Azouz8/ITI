@@ -1,0 +1,23 @@
+.controls {
+  padding-inline: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.control:hover{
+    scale: 1.07;
+}
+.icon {
+  color: #ced4da;
+  padding-inline: 5px;
+}
+
+p {
+  color: #ced4da;
+}

@@ -1,0 +1,47 @@
+.card {
+  width: 18rem;
+  margin: 0.5rem;
+  background-color: #1c1f26;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+  border: 2px solid rgba(159, 165, 172, 0.15);
+}
+.card:hover {
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.img {
+  width: 100%;
+  height: 172px;
+  object-fit: fill;
+  padding: 0.8rem;
+  border-radius: 16px;
+}
+
+.body {
+  padding: 1rem;
+}
+
+.title {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text {
+  margin-bottom: 1rem;
+  color: #a9b2b9;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,17 @@
+.nav {
+  background-color: #262c31;
+  color: #f8f9fa;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(248, 249, 250, 0.15);
+}
+
+.container {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.title {
+  color: #f8f9fa;
+  margin: 0;
+  font-size: 1.75rem;
+}
