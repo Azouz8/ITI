@@ -18,7 +18,16 @@ class Post extends Component {
           <h5 className={styles.title}>{this.props.title}</h5>
           <p className={styles.text}>{this.props.description}</p>
         </div>
-        <PostControl />
+        <div className={styles.controls}>
+          <PostControl
+            id={this.props.id}
+            likeCount={this.props.likeCount}
+            dislikeCount={this.props.dislikeCount}
+            commentCount={this.props.commentCount}
+            shareCount={this.props.shareCount}
+            onUpdate={this.props.onUpdate}
+          />
+        </div>
       </div>
     );
   }

@@ -2,33 +2,70 @@
   "posts": [
     {
       "title": "Your adventure starts now",
-      "description": "You already come to daily.dev every day. You read posts, upvote the good stuff, drop comments, bookmark things you’ll “definitely read later.” But until now, none of that effort earned you anything tangible",
-      "imgUrl": "src/assets/post1.jpg"
+      "description": "You already come to [daily.dev](http://daily.dev) every day. You read posts, upvote the good stuff, drop comments, bookmark things you'll 'definitely read later.' But until now, none of that effort earned you anything tangible",
+      "imgUrl": "src/assets/post1.jpg",
+      "id": "wgmia3ukdak",
+      "likeCount": 346,
+      "dislikeCount": 87,
+      "commentCount": 63,
+      "shareCount": 19,
+      "category": "Tech"
     },
     {
-      "title": "stop using vscode like this (it’s killing your workflow)",
+      "title": "stop using vscode like this (it's killing your workflow)",
       "description": "VSCode's reputation for being bloated is largely self-inflicted. Developers who pile on dozens of extensions for git, formatting, UI tweaks, and AI assistants create their own performance problems, then blame the editor. Keeping VSCode minimal (just a theme and one language extension) results in a fast, stable experience. Beyond performance, the bigger productivity drain is passive usage",
-      "imgUrl": "src/assets/post2.jpg"
+      "imgUrl": "src/assets/post2.jpg",
+      "id": "TKLpqrgAvbE",
+      "likeCount": 214,
+      "dislikeCount": 34,
+      "commentCount": 47,
+      "shareCount": 11,
+      "category": "Tech"
     },
     {
       "title": "Ditching GitHub",
       "description": "A developer who has maintained the Telethon Python library since 2014 shares their frustrations with GitHub's aggressive AI integration and the broader AI hype cycle. They announce migrating their projects to Codeberg, a non-profit code forge, citing GitHub's declining quality, AI crawler abuse of self-hosted servers, LLM-generated code slop flooding open source projects, and concerns about AI's environmental, social, and labor impacts. The author stops short of fully leaving GitHub due to link-rot concerns and the social capital of 12,000 stars, but advocates for owning your code and hardware.",
-      "imgUrl": "src/assets/post3.jpg"
+      "imgUrl": "src/assets/post3.jpg",
+      "id": "Kr8FRCyQKGA",
+      "likeCount": 589,
+      "dislikeCount": 102,
+      "commentCount": 138,
+      "shareCount": 44,
+      "category": "Tech"
     },
     {
       "title": "PHP runtime written in Rust",
       "description": "Turbine is a high-performance PHP application server written in Rust that embeds PHP directly via the PHP embed SAPI, replacing the traditional Nginx + PHP-FPM + OPcache stack with a single binary. It eliminates inter-process communication overhead and offers ",
-      "imgUrl": "src/assets/post4.jpg"
+      "imgUrl": "src/assets/post4.jpg",
+      "id": "G7sbr9bJd0c",
+      "likeCount": 76,
+      "dislikeCount": 12,
+      "commentCount": 29,
+      "shareCount": 7,
+      "category": "Tech"
     },
     {
       "title": "Warp terminal goes open-source under AGPL, with OpenAI as founding sponsor",
       "description": "Warp, the Rust-based AI terminal and agentic development environment, has open-sourced its client codebase on GitHub. The licensing is split: the UI framework crates are MIT-licensed, and everything else is AGPLv3. OpenAI is the founding sponsor.",
-      "imgUrl": "src/assets/post5.jpg"
+      "imgUrl": "src/assets/post5.jpg",
+      "id": "YN8wi8xQpKY",
+      "likeCount": 431,
+      "dislikeCount": 58,
+      "commentCount": 91,
+      "shareCount": 33,
+      "category": "Tech"
     },
     {
       "title": "Firefox Has Quietly Integrated Brave's Adblock Engine",
       "description": "Firefox 149 quietly shipped adblock-rust, Brave's open-source Rust-based ad and tracker blocking engine, without mentioning it in the release notes. The integration was filed as a Bugzilla bug titled 'Add a prototype rich content blocking engine' and is currently disabled by default with no UI or filter lists. The engine supports uBlock Origin-compatible filter list syntax and handles network request blocking and cosmetic filtering. Waterfox, a Firefox fork",
-      "imgUrl": "src/assets/post6.jpg"
+      "imgUrl": "src/assets/post6.jpg",
+      "id": "i4quWGOesdw",
+      "likeCount": 267,
+      "dislikeCount": 45,
+      "commentCount": 74,
+      "shareCount": 22,
+      "category": "Tech"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

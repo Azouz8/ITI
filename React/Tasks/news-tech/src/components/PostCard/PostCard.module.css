@@ -4,8 +4,8 @@
   background-color: #1c1f26;
   border-radius: 0.5rem;
   overflow: hidden;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  flex-direction: column;
   border: 2px solid rgba(159, 165, 172, 0.15);
 }
 .card:hover {
@@ -22,6 +22,11 @@
 
 .body {
   padding: 1rem;
+  flex-grow: 1;
+}
+
+.controls {
+  margin-top: auto;
 }
 
 .title {

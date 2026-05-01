@@ -53,11 +53,14 @@ class Carousel extends Component {
           >
             &#8249;
           </button>
-          <img
-            className={styles.img}
-            src={this.state.imgs[this.state.current]}
-            alt="carousel slide"
-          />
+          {this.state.imgs.map((img, index) => (
+            <img
+              key={index}
+              className={`${styles.img} ${this.state.current !== index ? styles.hiddenImg : ""}`}
+              src={img}
+              alt="carousel slide"
+            />
+          ))}
           <button
             type="button"
             className={styles.btn}

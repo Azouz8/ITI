@@ -1,4 +1,5 @@
 import { Component } from "react";
+import axios from "axios";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Carousel from "../../components/Carousel/Carousel";
@@ -7,6 +8,22 @@ import styles from "./Home.module.css";
 import PostsList from "../../components/PostsList/PostsList";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      newPost: null,
+    };
+  }
+
+  getPostData = (post) => {
+    axios
+      .post("http://localhost:3000/posts", post)
+      .then((res) => {
+        this.setState({ newPost: res.data });
+      })
+      .catch((err) => console.error("Error adding post:", err));
+  };
+
   render() {
     return (
       <div className={styles.layout}>
@@ -14,11 +31,11 @@ class Home extends Component {
         <div className={styles.content}>
           <div className={styles.row}>
             <div className={styles["sidebar-col"]}>
-              <Sidebar />
+              <Sidebar getPostData={this.getPostData} />
             </div>
             <div className={styles["main-col"]}>
               <Carousel />
-              <PostsList />
+              <PostsList newPost={this.state.newPost} />
             </div>
           </div>
         </div>
