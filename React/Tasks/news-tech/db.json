@@ -66,6 +66,5 @@
       "shareCount": 22,
       "category": "Tech"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }

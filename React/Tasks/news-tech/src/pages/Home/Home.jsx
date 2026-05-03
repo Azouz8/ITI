@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -7,60 +7,65 @@ import Footer from "../../components/Footer/Footer";
 import styles from "./Home.module.css";
 import PostsList from "../../components/PostsList/PostsList";
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      newPost: null,
-    };
-  }
+const Home = () => {
+  const [posts, setPosts] = useState([]);
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  getPostData = (post) => {
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/posts")
+      .then((res) => {
+        setPosts(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  const getPostData = (post) => {
     axios
       .post("http://localhost:3000/posts", post)
       .then((res) => {
-        this.setState({ newPost: res.data });
+        setPosts((prev) => [res.data, ...prev]);
       })
-      .catch((err) => console.error("Error adding post:", err));
+      .catch((err) => console.error(err));
   };
 
-  render() {
-    return (
-      <div className={styles.layout}>
-        <Header />
-        <div className={styles.content}>
-          <div className={styles.row}>
-            <div className={styles["sidebar-col"]}>
-              <Sidebar getPostData={this.getPostData} />
-            </div>
-            <div className={styles["main-col"]}>
-              <Carousel />
-              <PostsList newPost={this.state.newPost} />
-            </div>
+  const filteredPosts =
+    search.trim() === ""
+      ? posts
+      : posts.filter(
+          (post) =>
+            post.title.toLowerCase().includes(search.toLowerCase()) ||
+            post.description.toLowerCase().includes(search.toLowerCase()),
+        );
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  return (
+    <div className={styles.layout}>
+      <Header search={search} setSearch={setSearch} />
+
+      <div className={styles.content}>
+        <div className={styles.row}>
+          <div className={styles["sidebar-col"]}>
+            <Sidebar getPostData={getPostData} />
+          </div>
+
+          <div className={styles["main-col"]}>
+            <Carousel />
+            <PostsList posts={filteredPosts} setPosts={setPosts} />
           </div>
         </div>
-        <Footer />
       </div>
-    );
-  }
-}
 
-// function Home() {
-//   return (
-//     <div className="home-layout">
-//       <Header />
-//       <div className="home-content">
-//         <div className="home-row">
-//           <div className="home-sidebar-col">
-//             <Sidebar />
-//           </div>
-//           <div className="home-main-col">
-//             <CardList />
-//           </div>
-//         </div>
-//       </div>
-//       <Footer />
-//     </div>
-//   );
-// }
+      <Footer />
+    </div>
+  );
+};
+
 export default Home;

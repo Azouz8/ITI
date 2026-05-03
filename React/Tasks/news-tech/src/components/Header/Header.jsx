@@ -1,26 +1,23 @@
-import { Component } from "react";
 import styles from "./Header.module.css";
 
-class Header extends Component {
-  render() {
-    return (
-      <nav className={styles.nav}>
-        <div className={styles.container}>
-          <h1 className={styles.title}>NewsTech</h1>
-        </div>
-      </nav>
-    );
-  }
-}
+const Header = ({ search, setSearch }) => {
+  return (
+    <nav className={styles.nav}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>News Feed</h1>
 
-// const Header = () => {
-//   return (
-//     <nav className="header-nav">
-//       <div className="header-container">
-//         <h1 className="header-title">Header</h1>
-//       </div>
-//     </nav>
-//   );
-// };
+        <div className={styles.searchBox}>
+          <input
+            type="text"
+            placeholder="Search posts..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className={styles.searchInput}
+          />
+        </div>
+      </div>
+    </nav>
+  );
+};
 
 export default Header;

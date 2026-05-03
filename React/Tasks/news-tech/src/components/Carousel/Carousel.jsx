@@ -1,86 +1,68 @@
-import { Component } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Carousel.module.css";
 
-class Carousel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      imgs: [
-        "src/assets/Wallpaper1.jpg",
-        "src/assets/Wallpaper2.jpg",
-        "src/assets/Wallpaper3.jpg",
-        "src/assets/Wallpaper4.jpg",
-      ],
-      current: 0,
-      isAutomated: false,
-    };
-  }
+const Carousel = () => {
+  const [images, setImages] = useState([
+    "src/assets/Wallpaper1.jpg",
+    "src/assets/Wallpaper2.jpg",
+    "src/assets/Wallpaper3.jpg",
+    "src/assets/Wallpaper4.jpg",
+  ]);
+  const [current, setCurrent] = useState(0);
 
-  moveForward = () => {
-    this.setState((prevState) => ({
-      current: (prevState.current + 1) % prevState.imgs.length,
-    }));
+  const moveForward = () => {
+    setCurrent((prev) => (prev + 1) % images.length);
   };
-  moveBackward = () => {
-    this.setState({
-      current:
-        (this.state.current - 1 + this.state.imgs.length) %
-        this.state.imgs.length,
-    });
+
+  const moveBackward = () => {
+    setCurrent((prev) => (prev - 1 + images.length) % images.length);
   };
-  goToSlide = (index) => {
-    this.setState({ current: index });
+
+  const goToSlide = (index) => {
+    setCurrent(index);
   };
-  automateCarousel = () => {
-    this.timer = setInterval(() => {
-      this.moveForward();
-    }, 2000);
-  };
-  // componentDidMount() {
-  //   this.automateCarousel();
-  // }
-  componentWillUnmount() {
-    if (this.timer) clearInterval(this.timer);
-  }
-  render() {
-    return (
+
+  // useEffect(() => {
+  //   let CarouselInterval = setInterval(() => {
+  //     moveForward();
+  //   }, 2000);
+
+  //   return () => {
+  //     clearInterval(CarouselInterval);
+  //   };
+  // }, []);
+  return (
+    <>
       <div className={styles.wrapper}>
         <div className={styles.carousel}>
-          <button
-            type="button"
-            className={styles.btn}
-            onClick={this.moveBackward}
-          >
+          <button type="button" className={styles.btn} onClick={moveBackward}>
             &#8249;
           </button>
-          {this.state.imgs.map((img, index) => (
+          {images.map((img, index) => (
             <img
               key={index}
-              className={`${styles.img} ${this.state.current !== index ? styles.hiddenImg : ""}`}
+              className={`${styles.img} ${current !== index ? styles.hiddenImg : ""}`}
               src={img}
               alt="carousel slide"
             />
           ))}
-          <button
-            type="button"
-            className={styles.btn}
-            onClick={this.moveForward}
-          >
+          <button type="button" className={styles.btn} onClick={moveForward}>
             &#8250;
           </button>
         </div>
         <div className={styles.indicator}>
-          {this.state.imgs.map((_, index) => (
+          {}
+          {images.map((_, index) => (
             <div
               key={index}
-              className={`${styles.dot} ${this.state.current === index ? styles.active : ""}`}
-              onClick={() => this.goToSlide(index)}
+              className={`${styles.dot} ${current === index ? styles.active : ""}`}
+              onClick={() => goToSlide(index)}
             ></div>
           ))}
         </div>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default Carousel;
