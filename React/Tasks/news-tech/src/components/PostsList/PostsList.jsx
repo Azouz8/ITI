@@ -1,25 +1,16 @@
-import axios from "axios";
 import styles from "./PostsList.module.css";
 import Post from "./../PostCard/PostCard";
+import { useContext } from "react";
+import { PostsContext } from "../../context/PostsContext";
 
-const PostsList = ({ posts, setPosts }) => {
-  const handleUpdatePost = (id, updatedData) => {
-    setPosts((prevPosts) =>
-      prevPosts.map((post) =>
-        post.id === id ? { ...post, ...updatedData } : post,
-      ),
-    );
-
-    axios
-      .patch(`http://localhost:3000/posts/${id}`, updatedData)
-      .catch((err) => console.error("Failed to update post", err));
-  };
+const PostsList = () => {
+  const { filteredPosts } = useContext(PostsContext);
 
   return (
     <>
       <div className={styles.list}>
-        {posts.map((post) => (
-          <Post key={post.id} post={post} onUpdate={handleUpdatePost} />
+        {filteredPosts.map((post) => (
+          <Post key={post.id} post={post} />
         ))}
       </div>
     </>

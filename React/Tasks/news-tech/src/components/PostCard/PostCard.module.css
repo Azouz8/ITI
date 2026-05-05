@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   border: 2px solid rgba(159, 165, 172, 0.15);
+  cursor: pointer;
 }
 .card:hover {
   border: 2px solid rgba(255, 255, 255, 0.15);

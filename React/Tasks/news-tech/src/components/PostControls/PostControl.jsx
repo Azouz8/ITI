@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +6,7 @@ import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { faShareFromSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./PostControl.module.css";
+import { PostsContext } from "./../../context/PostsContext";
 
 const PostControl = ({
   id,
@@ -13,15 +14,16 @@ const PostControl = ({
   dislikeCount,
   commentCount,
   shareCount,
-  onUpdate,
 }) => {
   const [vote, setVote] = useState(null);
+  const { handleUpdatePost } = useContext(PostsContext);
 
-  const clickUpIcon = () => {
+  const clickUpIcon = (e) => {
+    e.stopPropagation();
     if (vote === "up") {
       setVote(null);
-      if (onUpdate) {
-        onUpdate(id, {
+      if (handleUpdatePost) {
+        handleUpdatePost(id, {
           likeCount: likeCount - 1,
         });
       }
@@ -30,18 +32,19 @@ const PostControl = ({
       const newDislikeCount = vote === "down" ? dislikeCount - 1 : dislikeCount;
       setVote("up");
 
-      onUpdate(id, {
+      handleUpdatePost(id, {
         likeCount: newLikeCount,
         dislikeCount: newDislikeCount,
       });
     }
   };
 
-  const clickDownIcon = () => {
+  const clickDownIcon = (e) => {
+    e.stopPropagation();
     if (vote === "down") {
       setVote(null);
-      if (onUpdate) {
-        onUpdate(id, {
+      if (handleUpdatePost) {
+        handleUpdatePost(id, {
           dislikeCount: dislikeCount - 1,
         });
       }
@@ -50,7 +53,7 @@ const PostControl = ({
       const newLikeCount = vote === "up" ? likeCount - 1 : likeCount;
       setVote("down");
 
-      onUpdate(id, {
+      handleUpdatePost(id, {
         likeCount: newLikeCount,
         dislikeCount: newDislikeCount,
       });

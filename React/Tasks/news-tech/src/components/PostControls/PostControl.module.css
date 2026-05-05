@@ -5,14 +5,18 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
 .control {
   display: flex;
   flex-direction: row;
   align-items: center;
   cursor: pointer;
+  justify-content: center;
 }
+
 .control:hover {
   scale: 1.15;
+  z-index: 10;
 }
 
 .icon {
@@ -26,8 +30,10 @@
 .number {
   color: #ced4da;
   font-size: 14px;
+  margin: 0;
 }
 .activeNumber {
   color: mediumslateblue;
   font-size: 14px;
+  margin: 0;
 }

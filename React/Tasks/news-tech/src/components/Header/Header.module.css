@@ -24,9 +24,9 @@
 }
 
 .searchInput {
-  width: 60%;
+  width: 40%;
   padding: 10px 15px;
-  border-radius: 20px;
+  border-radius: 8px;
   border: 1px solid #ddd;
   outline: none;
   transition: 0.2s;

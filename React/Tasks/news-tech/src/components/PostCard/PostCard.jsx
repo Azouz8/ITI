@@ -1,10 +1,16 @@
 import styles from "./PostCard.module.css";
 import PostControl from "./../PostControls/PostControl";
+import { useNavigate } from "react-router";
 
-const Post = ({ post, onUpdate }) => {
+const Post = ({ post }) => {
+  const navigateTo = useNavigate();
+  const handleOnClick = () => {
+    navigateTo(`/post/${post.id}`);
+  };
+
   return (
     <>
-      <div className={styles.card}>
+      <div className={styles.card} onClick={handleOnClick}>
         <img className={styles.img} src={post.imgUrl} alt="Card image cap" />
         <div className={styles.body}>
           <h5 className={styles.title}>{post.title}</h5>
@@ -17,7 +23,6 @@ const Post = ({ post, onUpdate }) => {
             dislikeCount={post.dislikeCount}
             commentCount={post.commentCount}
             shareCount={post.shareCount}
-            onUpdate={onUpdate}
           />
         </div>
       </div>

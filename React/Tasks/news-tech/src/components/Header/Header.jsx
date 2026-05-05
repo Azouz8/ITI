@@ -1,11 +1,22 @@
+import { useNavigate } from "react-router";
 import styles from "./Header.module.css";
+import { useContext } from "react";
+import { PostsContext } from "../../context/PostsContext";
 
-const Header = ({ search, setSearch }) => {
+const Header = () => {
+  const navigateTo = useNavigate();
+
+  const logoutClick = () => {
+    localStorage.removeItem("user");
+    navigateTo("/login", { replace: true });
+  };
+
+  const { search, setSearch } = useContext(PostsContext);
+
   return (
     <nav className={styles.nav}>
       <div className={styles.container}>
-        <h1 className={styles.title}>News Feed</h1>
-
+        <h1 className={styles.title}>NewsTech</h1>
         <div className={styles.searchBox}>
           <input
             type="text"
@@ -15,6 +26,9 @@ const Header = ({ search, setSearch }) => {
             className={styles.searchInput}
           />
         </div>
+        <button className="btn btn-outline-danger" onClick={logoutClick}>
+          Logout
+        </button>
       </div>
     </nav>
   );

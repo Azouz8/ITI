@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./Sidebar.module.css";
+import { PostsContext } from "../../context/PostsContext";
 
-const Sidebar = ({ getPostData }) => {
+const Sidebar = () => {
   const initialState = {
     category: "",
     title: "",
@@ -12,6 +13,8 @@ const Sidebar = ({ getPostData }) => {
     shareCount: 0,
     imgUrl: "src/assets/post1.jpg",
   };
+
+  const { getPostData } = useContext(PostsContext);
   const [inputData, setInputData] = useState(initialState);
 
   const handleOnChange = (e) => {
