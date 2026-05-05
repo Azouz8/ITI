@@ -1,16 +1,10 @@
 {
   "users": [
     {
-      "name": "Azouz",
+      "name": "Ali",
       "email": "ali@gmail.com",
       "password": "123123",
-      "id": "WMJvyHqnx-A"
-    },
-    {
-      "name": "sadas",
-      "email": "dasd@fasfa.asdas",
-      "password": "123123",
-      "id": "FQX5OVct9qY"
+      "id": "L449m0tOov0"
     }
   ],
   "posts": [

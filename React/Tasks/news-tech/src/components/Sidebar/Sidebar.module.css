@@ -103,3 +103,16 @@
 .btn:active {
   background-color: rgb(57, 49, 109);
 }
+
+.errorInput {
+  border: 1px solid red;
+  outline-color: red;
+}
+
+.errorMsg {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+

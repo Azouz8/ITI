@@ -2,23 +2,25 @@ import { useNavigate } from "react-router";
 import styles from "./Login.module.css";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 const Login = () => {
   const navigateTo = useNavigate();
   const goToRegister = () => {
     navigateTo("/signup");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    const formData = new FormData(e.target);
-
-    const email = formData.get("email").toLocaleLowerCase();
-    const password = formData.get("password");
-
+  const onSubmit = ({ email, password }) => {
     axios.get("http://localhost:3000/users").then((res) => {
       const user = res.data.find(
-        (u) => u.email === email && u.password === password,
+        (u) =>
+          u.email.toLowerCase() === email.toLowerCase() &&
+          u.password === password,
       );
 
       if (user) {
@@ -30,35 +32,48 @@ const Login = () => {
           navigateTo("/", { replace: true });
         }, 1000);
       } else {
-        alert("Invalid User Data");
+        toast.error("Invalid Email Address or Password!");
       }
     });
   };
+
   return (
     <>
       <div className={styles.container}>
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <h4 className="text-light text-center mb-3 fw-bold">Login</h4>
           <div className={styles.inputField}>
             <input
               type="email"
               name="email"
               placeholder="Email Address"
-              className="form-control"
-              required
-              pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
+              className={`form-control ${errors.email ? "is-invalid" : ""}`}
+              {...register("email", {
+                required: "Email is required!",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "Enter a valid email address",
+                },
+              })}
             />
+            {errors.email && (
+              <div className="invalid-feedback">{errors.email.message}</div>
+            )}
           </div>
           <div className={styles.inputField}>
             <input
-              type="text"
               name="password"
               type="password"
               placeholder="Password"
-              className="form-control"
-              required
-              minLength="3"
+              className={`form-control ${errors.password ? "is-invalid" : ""}`}
+              {...register("password", {
+                required: "Password is required",
+                minLength: { value: 3, message: "Minimum 3 characters" },
+              })}
             />
+            {errors.password && (
+              <div className="invalid-feedback">{errors.password.message}</div>
+            )}
           </div>
           <div
             className={
