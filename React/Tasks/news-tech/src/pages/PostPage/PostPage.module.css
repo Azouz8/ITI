@@ -1,18 +1,10 @@
-/* .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
-  background-color: #212529;
-} */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  background-color: #212529;
+  background-color: var(--bg-main-content);
   position: relative;
 }
 .backButton {
@@ -20,7 +12,7 @@
   top: 2rem;
   left: 2rem;
   padding: 0.6rem 1.2rem;
-  background-color: #1c1f26;
+  background-color: darkslateblue;
   color: #ced4da;
   border: 1px solid rgba(159, 165, 172, 0.3);
   border-radius: 8px;
@@ -38,15 +30,16 @@
 .card {
   width: 50rem;
   margin: 0.5rem;
-  background-color: #1c1f26;
+  background-color: var(--post-color);
   border-radius: 0.5rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 2px solid rgba(159, 165, 172, 0.15);
+  border: 2px solid var(--post-border-color);
+  box-shadow: 1px 1px 10px var(--post-shadow-color);
 }
 .card:hover {
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  border: 2px solid var(--post-hover-border-color);
 }
 
 .img {
@@ -70,7 +63,7 @@
   margin-bottom: 0.75rem;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -80,7 +73,7 @@
 
 .text {
   margin-bottom: 1rem;
-  color: #a9b2b9;
+  color: var(--text-secondary);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;

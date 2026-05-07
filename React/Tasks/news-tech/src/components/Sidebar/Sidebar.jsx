@@ -1,6 +1,8 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import styles from "./Sidebar.module.css";
-import { PostsContext } from "../../context/PostsContext";
+import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { addPostAsync } from "../../redux/slices/postsSlice";
 
 const Sidebar = () => {
   const initialState = {
@@ -14,9 +16,10 @@ const Sidebar = () => {
     imgUrl: "src/assets/post1.jpg",
   };
 
-  const { getPostData } = useContext(PostsContext);
   const [inputData, setInputData] = useState(initialState);
   const [errors, setErrors] = useState({});
+  const { t } = useTranslation("sidebar");
+  const dispatch = useDispatch();
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -55,7 +58,7 @@ const Sidebar = () => {
       return;
     }
 
-    getPostData(inputData);
+    dispatch(addPostAsync(inputData));
     setInputData(initialState);
     setErrors({});
   };
@@ -63,13 +66,13 @@ const Sidebar = () => {
   return (
     <>
       <div className={styles.sidebar}>
-        <h4 className={styles.title}>What is in Ur mind?!</h4>
+        <h4 className={styles.title}>{t("What is in Ur mind?!")}</h4>
 
         <div className={styles.field}>
           <input
             type="text"
             className={`${styles.input} ${errors.category ? styles.errorInput : ""}`}
-            placeholder="Category"
+            placeholder={t("Category")}
             name="category"
             value={inputData.category}
             onChange={handleOnChange}
@@ -82,7 +85,7 @@ const Sidebar = () => {
           <input
             type="text"
             className={`${styles.input} ${errors.title ? styles.errorInput : ""}`}
-            placeholder="News Title"
+            placeholder={t("News Title")}
             name="title"
             value={inputData.title}
             onChange={handleOnChange}
@@ -92,7 +95,7 @@ const Sidebar = () => {
         <div className={styles.field}>
           <textarea
             className={`${styles.textarea} ${errors.description ? styles.errorInput : ""}`}
-            placeholder="Description"
+            placeholder={t("Description")}
             name="description"
             value={inputData.description}
             onChange={handleOnChange}

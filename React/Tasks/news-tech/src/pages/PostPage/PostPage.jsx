@@ -1,13 +1,12 @@
 import { useNavigate, useParams } from "react-router";
 import PostControl from "./../../components/PostControls/PostControl";
 import styles from "./PostPage.module.css";
-import { useContext } from "react";
-import { PostsContext } from "./../../context/PostsContext";
+import { useSelector } from "react-redux";
 
 const PostPage = () => {
   const { id } = useParams();
 
-  const { posts } = useContext(PostsContext);
+  const posts = useSelector((state) => state.postsR.posts ?? []);
 
   const post = posts.find((p) => p.id === id);
 

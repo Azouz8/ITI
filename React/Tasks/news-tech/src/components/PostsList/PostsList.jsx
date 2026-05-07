@@ -1,11 +1,13 @@
 import styles from "./PostsList.module.css";
 import Post from "./../PostCard/PostCard";
-import { useContext } from "react";
-import { PostsContext } from "../../context/PostsContext";
+import { useSelector } from "react-redux";
 
 const PostsList = () => {
-  const { filteredPosts } = useContext(PostsContext);
-
+  const posts = useSelector((state) => state.postsR.posts);
+  const search = useSelector((state) => state.postsR.search);
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(search.toLowerCase()),
+  );
   return (
     <>
       <div className={styles.list}>

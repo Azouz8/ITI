@@ -4,7 +4,7 @@
       "name": "Ali",
       "email": "ali@gmail.com",
       "password": "123123",
-      "id": "L449m0tOov0"
+      "id": "kVVgk9_8NrU"
     }
   ],
   "posts": [
@@ -73,6 +73,17 @@
       "commentCount": 74,
       "shareCount": 22,
       "category": "Tech"
+    },
+    {
+      "category": "Tech",
+      "title": "New Post ",
+      "description": "This is a description for the new Post",
+      "likeCount": 0,
+      "dislikeCount": 0,
+      "commentCount": 0,
+      "shareCount": 0,
+      "imgUrl": "src/assets/post1.jpg",
+      "id": "tzq68hvNCJ0"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

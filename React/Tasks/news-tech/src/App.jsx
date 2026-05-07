@@ -8,8 +8,9 @@ import Layout from "./pages/Layout";
 import PostPage from "./pages/PostPage/PostPage";
 import ProtectedRoute from "./ProtectedRoute";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import PostProvider from "./context/PostProvider";
 import { Toaster } from "react-hot-toast";
+import { storeConfig } from "./redux/store/store";
+import { Provider } from "react-redux";
 
 function App() {
   const routerConfig = createBrowserRouter([
@@ -43,9 +44,9 @@ function App() {
   return (
     <>
       <Toaster position="top-right" />
-      <PostProvider>
+      <Provider store={storeConfig}>
         <RouterProvider router={routerConfig} />
-      </PostProvider>
+      </Provider>
     </>
   );
 }

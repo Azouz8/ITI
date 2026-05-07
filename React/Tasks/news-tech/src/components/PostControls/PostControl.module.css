@@ -5,7 +5,6 @@
   flex-direction: row;
   justify-content: space-around;
 }
-
 .control {
   display: flex;
   flex-direction: row;
@@ -13,22 +12,27 @@
   cursor: pointer;
   justify-content: center;
 }
-
 .control:hover {
   scale: 1.15;
   z-index: 10;
 }
-
+.control:active,
+.control:active .icon,
+.control:active .activeIcon,
+.control:active .number,
+.control:active .activeNumber {
+  color: rgb(99, 83, 187);
+}
 .icon {
-  color: #ced4da;
-  padding-right: 5px;
+  color: var(--post-control-icon-color);
+  padding-inline: 5px;
 }
 .activeIcon {
   color: mediumslateblue;
-  padding-right: 5px;
+  padding-inline: 5px;
 }
 .number {
-  color: #ced4da;
+  color: var(--post-control-icon-color);
   font-size: 14px;
   margin: 0;
 }

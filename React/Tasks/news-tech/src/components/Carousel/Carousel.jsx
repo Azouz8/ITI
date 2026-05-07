@@ -1,5 +1,10 @@
 import { useState } from "react";
 import styles from "./Carousel.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Carousel = () => {
   const [images, setImages] = useState([
@@ -36,7 +41,7 @@ const Carousel = () => {
       <div className={styles.wrapper}>
         <div className={styles.carousel}>
           <button type="button" className={styles.btn} onClick={moveBackward}>
-            &#8249;
+            <FontAwesomeIcon icon={faChevronLeft} />
           </button>
           {images.map((img, index) => (
             <img
@@ -47,7 +52,7 @@ const Carousel = () => {
             />
           ))}
           <button type="button" className={styles.btn} onClick={moveForward}>
-            &#8250;
+            <FontAwesomeIcon icon={faChevronRight} />
           </button>
         </div>
         <div className={styles.indicator}>

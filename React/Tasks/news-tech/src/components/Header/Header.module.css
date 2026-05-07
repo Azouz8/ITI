@@ -1,18 +1,20 @@
 .nav {
-  background-color: #262c31;
-  color: #f8f9fa;
+  background-color: var(--bg-nav);
+  color: var(--text-primary);
   padding: 1rem 0;
-  border-bottom: 1px solid rgba(248, 249, 250, 0.15);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .container {
   display: flex;
+  align-items: center;
   width: 100%;
   padding: 0 1rem;
 }
 
 .title {
-  color: #f8f9fa;
+  color: var(--text-primary);
+  font-weight: bold;
   margin: 0;
   font-size: 1.75rem;
 }
@@ -27,12 +29,65 @@
   width: 40%;
   padding: 10px 15px;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 2px solid var(--border-color);
+  background-color: var(--input-color);
   outline: none;
   transition: 0.2s;
 }
 
 .searchInput:focus {
-  border-color: #4a90e2;
-  box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+  border-color: darkslateblue;
+  box-shadow: 0 0 5px rgba(106, 91, 204, 0.288);
+}
+
+.langIcon {
+  display: flex;
+  align-items: center;
+  color: var(--text-primary);
+  font-size: 20px;
+  padding-inline: 12px;
+  gap: 5px;
+  cursor: pointer;
+}
+.langIcon:hover {
+  color: rgb(104, 108, 112);
+}
+
+.langIcon:active {
+  color: rgb(66, 71, 77);
+}
+
+.moonIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: rgb(33, 33, 190);
+  font-size: 20px;
+  padding-inline: 12px;
+  gap: 5px;
+}
+.moonIcon:hover {
+  color: rgb(1, 1, 255);
+}
+
+.moonIcon:active {
+  color: rgb(0, 0, 179);
+}
+
+.sunIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: rgb(196, 142, 8);
+  font-size: 20px;
+  padding-inline: 12px;
+  gap: 5px;
+}
+
+.sunIcon:hover {
+  color: rgb(255, 183, 0);
+}
+
+.sunIcon:active {
+  color: rgb(231, 177, 39);
 }
