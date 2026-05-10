@@ -8,5 +8,19 @@ namespace Project.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Department> Departments { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Department>()
+                .HasIndex(d => d.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<Department>()
+                .HasMany(d => d.Students)
+                .WithOne(s => s.Department)
+                .HasForeignKey(s => s.DepartmentId)
+                .OnDelete(DeleteBehavior.SetNull);
+        }
     }
 }

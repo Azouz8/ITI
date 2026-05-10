@@ -14,14 +14,25 @@ namespace Project
             LogManager.Setup().LoadConfigurationFromFile("nlog.config");
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Logging.ClearProviders();
             builder.Host.UseNLog();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReact", policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
             builder.Services.AddControllers(options =>
             {
                 options.Filters.Add<ExceptionHandlingFilter>();
                 options.Filters.Add<AddHeaderResultFilter>();
-            });
+            })
+            .AddJsonOptions(options =>
+             {
+                 options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+             });
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -30,7 +41,7 @@ namespace Project
 
             var app = builder.Build();
             app.UseMiddleware<ExceptionHandlingMiddleware>();
-
+            app.UseCors("AllowReact");
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
