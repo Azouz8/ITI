@@ -15,7 +15,7 @@ namespace Project.Models
         [Required]
         public string Manager { get; set; }
 
-        public ICollection<Student> Students { get; set; } = new List<Student>();
+        public virtual ICollection<Student> Students { get; set; }
 
     }
 }

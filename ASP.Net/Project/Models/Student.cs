@@ -1,5 +1,6 @@
 ﻿using Project.Validation;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Models
 {
@@ -26,8 +27,8 @@ namespace Project.Models
         public DateTime DateOfBirth { get; set; }
 
         public string? ImagePath { get; set; }
-
+        [ForeignKey(nameof(Department))]
         public int? DepartmentId { get; set; }
-        public Department? Department { get; set; }
+        public virtual Department? Department { get; set; }
     }
 }
