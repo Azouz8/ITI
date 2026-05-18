@@ -49,3 +49,16 @@ export async function getProductsByCategory(
   const data = await res.json();
   return data.products;
 }
+
+export async function searchProducts(query: string): Promise<Product[]> {
+  const res = await fetch(
+    `${BASE_URL}/products/search?q=${encodeURIComponent(query)}`
+  );
+
+  if (!res.ok) {
+    throw new Error(`Failed to search products for "${query}"`);
+  }
+
+  const data = await res.json();
+  return data.products;
+}

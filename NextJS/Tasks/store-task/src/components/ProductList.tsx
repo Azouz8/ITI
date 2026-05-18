@@ -1,16 +1,19 @@
-import { getProducts } from "@/services/productApi";
+import { getProducts, searchProducts } from "@/services/productApi";
 import Product from "@/types/product";
-import React from "react";
 import ProductCard from "./ProductCard";
 
-export default async function ProductList() {
-  const products: Product[] = await getProducts();
+interface Props {
+  query?: string;
+}
+
+export default async function ProductList({ query }: Props) {
+  const products: Product[] = query ? await searchProducts(query) : await getProducts();
 
   if (products.length === 0) {
     return (
       <div>
         <h1 className="text-2xl font-bold">
-          No Products Available
+          No Products Found
         </h1>
       </div>
     );

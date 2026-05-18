@@ -1,7 +1,7 @@
 import Product from "@/types/product";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import AddToCartButton from "./AddToCartButton";
 
 interface Props {
   product: Product;
@@ -33,12 +33,15 @@ export default function ProductCard({ product }: Props) {
         <div className="text-sm mb-3">
           Rating: {product.rating} / 5
         </div>
-        <Link
-          href={`/products/${product.id}`}
-          className="bg-blue-600 text-white text-center py-2 px-4 inline-block"
-        >
-          View Product
-        </Link>
+        <div className="flex gap-2 flex-col mt-3">
+          <Link
+            href={`/products/${product.id}`}
+            className="bg-blue-600 text-white text-center py-2 px-4 rounded hover:bg-blue-700 transition-colors"
+          >
+            View Product
+          </Link>
+          <AddToCartButton product={product} />
+        </div>
       </div>
     </div>
   );

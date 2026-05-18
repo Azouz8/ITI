@@ -2,16 +2,17 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="text-center mt-24">
-      <h1 className="text-6xl font-bold text-teal-400 mb-4">404</h1>
-      <p className="text-gray-400 text-xl mb-8">
-        The page you are looking for does not exist.
+    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+      <h2 className="text-6xl font-bold text-gray-800 mb-4">404</h2>
+      <h3 className="text-2xl font-semibold text-gray-600 mb-6">Product Not Found</h3>
+      <p className="text-gray-500 mb-8 max-w-md">
+        We couldn&apos;t find the page or product you were looking for. It might have been removed or doesn&apos;t exist.
       </p>
-      <Link
-        href="/"
-        className="bg-teal-500 px-6 py-3 text-white rounded-full hover:bg-teal-600 transition-colors font-semibold"
+      <Link 
+        href="/products" 
+        className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition-colors"
       >
-        Go Home
+        Return to Products
       </Link>
     </div>
   );

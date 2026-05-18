@@ -9,18 +9,25 @@ export const metadata = {
   description: "Browse all products available in Store",
 };
 
-export default function ProductsPage() {
+interface Props {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function ProductsPage({ searchParams }: Props) {
+  const resolvedSearchParams = await searchParams;
+  const q = typeof resolvedSearchParams.q === "string" ? resolvedSearchParams.q : "";
+
   return (
     <div className="p-6 max-w-5xl mx-auto">
       <h1 className="text-3xl font-bold mb-4">
-        All Products
+        {q ? `Search Results for "${q}"` : "All Products"}
       </h1>
       <p className="text-gray-600 mb-8">
-        Explore our wide range of products from different categories.
+        {q ? `Showing results matching your query.` : `Explore our wide range of products from different categories.`}
       </p>
 
-      <Suspense fallback={<Spinner />}>
-        <ProductList />
+      <Suspense fallback={<Spinner />} key={q}>
+        <ProductList query={q} />
       </Suspense>
     </div>
   );

@@ -1,9 +1,10 @@
 import "./globals.css";
 import { Josefin_Sans } from "next/font/google";
 import Header from "@/components/Header";
+import { CartProvider } from "@/context/CartContext";
 
 export const metadata = {
-  title: "Store - Next.js",
+  title: "Store",
   description: "A Next.js store app",
 };
 
@@ -17,10 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={josefin.className + " min-h-screen flex flex-col bg-white text-black"}>
-        <Header />
-        <div className="flex-1">
-          <main className="w-full h-full">{children}</main>
-        </div>
+        <CartProvider>
+          <Header />
+          <div className="flex-1">
+            <main className="w-full h-full">{children}</main>
+          </div>
+        </CartProvider>
       </body>
     </html>
   );

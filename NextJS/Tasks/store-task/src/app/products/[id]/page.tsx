@@ -1,13 +1,15 @@
 import { getProduct } from "@/services/productApi";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import AddToCartButton from "@/components/AddToCartButton";
 
 interface Props {
   params: Promise<{
     id: string;
   }>;
 }
+
+export const revalidate = 60;
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params;
@@ -51,10 +53,13 @@ export default async function ProductDetailPage({ params }: Props) {
           <p className="text-3xl font-bold text-green-700 mb-6">
             ${product.price.toFixed(2)}
           </p>
-          <p className="text-gray-700 mb-6">
+          <p className="text-gray-700 mb-6 leading-relaxed">
             {product.description}
           </p>
-          <div className="text-gray-600">
+          <div className="max-w-xs">
+            <AddToCartButton product={product} />
+          </div>
+          <div className="text-gray-600 mt-4">
             Rating: {product.rating} / 5
           </div>
         </div>
