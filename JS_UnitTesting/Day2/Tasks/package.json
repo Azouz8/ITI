@@ -1,0 +1,23 @@
+{
+  "name": "tasks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test-jasmine": "jasmine",
+    "test-mocha": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "jasmine": "^6.2.0",
+    "mocha": "^11.7.6",
+    "request": "^2.88.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
