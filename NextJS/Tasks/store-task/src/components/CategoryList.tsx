@@ -1,23 +1,27 @@
 import Link from "next/link";
+import React from "react";
 import { getCategories } from "@/services/productApi";
 import Category from "@/types/category";
 
-export default async function CategoryList() {
-  const categories: Category[] = await getCategories();
+interface Props {
+  categories?: Category[];
+}
+
+export default async function CategoryList({ categories }: Props) {
+  const data = categories || await getCategories();
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-      {categories.map((category) => (
-        <Link
-          key={category.slug}
-          href={`/category/${encodeURIComponent(category.slug)}`}
-          className="border border-gray-300 p-4 text-center bg-gray-50"
-        >
-          <h2 className="text-lg font-bold">
+    <ul className="flex gap-4 overflow-x-auto pb-4">
+      {data.map((category) => (
+        <li key={category.slug}>
+          <Link
+            href={`/category/${category.slug}`}
+            className="bg-gray-200 px-4 py-2 whitespace-nowrap hover:bg-blue-600 hover:text-white transition-colors block"
+          >
             {category.name}
-          </h2>
-        </Link>
+          </Link>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

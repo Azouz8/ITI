@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import React from "react";
 import { useCart } from "@/context/CartContext";
+import { useSession, signOut } from "next-auth/react";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -13,6 +15,7 @@ const navItems = [
 export default function Navigation() {
   const pathname = usePathname();
   const { totalItems } = useCart();
+  const { data: session, status } = useSession();
 
   return (
     <nav>
@@ -44,6 +47,31 @@ export default function Navigation() {
             )}
           </Link>
         </li>
+        
+        {/* Auth Section */}
+        {status === "loading" ? null : session ? (
+          <>
+            <li>
+              <Link href="/profile" className="font-semibold text-gray-600 hover:text-blue-600">
+                Profile
+              </Link>
+            </li>
+            <li>
+              <button 
+                onClick={() => signOut()} 
+                className="font-semibold text-red-500 hover:text-red-700 transition-colors"
+              >
+                Sign Out
+              </button>
+            </li>
+          </>
+        ) : (
+          <li>
+            <Link href="/login" className="font-semibold text-blue-600 hover:text-blue-800">
+              Login
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

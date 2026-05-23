@@ -1,29 +1,29 @@
-import Link from "next/link";
+import { getProducts, getCategories } from "@/services/productApi";
+import CategoryList from "@/components/CategoryList";
+import FeaturedProducts from "@/components/FeaturedProducts";
+import { getWishlist } from "@/actions/wishlist";
 
-export default function Home() {
+export default async function HomePage() {
+  const products = await getProducts();
+  const categories = await getCategories();
+  const wishlist = await getWishlist();
+
   return (
-    <div className="mt-12 text-center">
-      <h1 className="text-5xl font-bold mb-6">
-        Welcome to The Store
-      </h1>
-      <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-        Browse our collection of products from various categories. Find
-        electronics, jewelry, clothing and more at the best prices.
-      </p>
-      <div className="flex gap-4 justify-center">
-        <Link
-          href="/products"
-          className="bg-blue-600 text-white px-6 py-3"
-        >
-          Browse Products
-        </Link>
-        <Link
-          href="/category"
-          className="bg-gray-200 text-black px-6 py-3"
-        >
-          View Categories
-        </Link>
-      </div>
+    <div className="p-6 max-w-5xl mx-auto">
+      <h1 className="text-4xl font-bold mb-8 text-center mt-10">Welcome to Store</h1>
+      
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold mb-6 border-b pb-2">Shop by Category</h2>
+        <CategoryList categories={categories} />
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-6 border-b pb-2">Featured Products</h2>
+        <FeaturedProducts 
+          initialProducts={products.slice(0, 8)} 
+          initialWishlist={wishlist}
+        />
+      </section>
     </div>
   );
 }

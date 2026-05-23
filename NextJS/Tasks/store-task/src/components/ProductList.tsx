@@ -1,6 +1,8 @@
 import { getProducts, searchProducts } from "@/services/productApi";
 import Product from "@/types/product";
+import React from "react";
 import ProductCard from "./ProductCard";
+import { getWishlist } from "@/actions/wishlist";
 
 interface Props {
   query?: string;
@@ -8,6 +10,7 @@ interface Props {
 
 export default async function ProductList({ query }: Props) {
   const products: Product[] = query ? await searchProducts(query) : await getProducts();
+  const wishlist = await getWishlist();
 
   if (products.length === 0) {
     return (
@@ -22,7 +25,11 @@ export default async function ProductList({ query }: Props) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {products.map((product: Product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard 
+          key={product.id} 
+          product={product} 
+          inWishlist={wishlist.includes(product.id)} 
+        />
       ))}
     </div>
   );
