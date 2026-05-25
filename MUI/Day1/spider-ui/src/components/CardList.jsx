@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import wallpaper from "../../public/Wallpaper.jpg";
+import wallpaper from "../../src/assets/Wallpaper.jpg";
 
 const cards = [1, 2, 3, 4, 5, 6];
 export default function CardList() {

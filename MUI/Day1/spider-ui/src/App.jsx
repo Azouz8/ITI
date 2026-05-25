@@ -1,4 +1,3 @@
-import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CustomAppBar from "./components/AppBar";
 import HeroSection from "./components/HeroSection";
@@ -19,7 +18,6 @@ const theme = createTheme({
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
       <CustomAppBar />
       <HeroSection />
       <CardList />

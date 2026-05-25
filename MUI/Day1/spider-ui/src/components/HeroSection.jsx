@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import wallpaper from "../../public/Wallpaper.jpg";
+import wallpaper from "../../src/assets/Wallpaper.jpg";
 
 export default function HeroSection() {
   return (
