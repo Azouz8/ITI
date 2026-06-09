@@ -1,16 +1,48 @@
-# React + Vite
+# NewsTech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+NewsTech is a responsive web application designed to keep developers up to date with the latest technology news and trends. It provides a modern user experience with authentication, voting capabilities, localization support, and customizable themes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+* User authentication and authorization
+* Fetching and displaying technology news through API integration
+* Create and publish posts
+* Upvote and downvote functionality
+* Light and dark theme support
+* Multi-language support with i18n
+* Centralized state management using Redux
+* Responsive design
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies Used
 
-## Expanding the ESLint configuration
+* React
+* Redux Toolkit
+* React Router
+* Axios
+* i18next
+* CSS / Tailwind CSS
+* REST APIs
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+### Installation
+
+```bash
+git clone <repository-url>
+cd NewsTech
+npm install
+npm run dev
+```
+
+## Future Improvements
+
+* Comments system
+* Bookmarking posts
+* User profiles
+* Notifications
+
+## Author
+
+Ali Azouz
