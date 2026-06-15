@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 
 class ProgressWidget extends StatelessWidget {
-  const ProgressWidget({super.key});
+  const ProgressWidget({
+    super.key,
+    required this.checkListLength,
+    required this.checkedItemsLength,
+  });
+
+  final int checkListLength;
+
+  final int checkedItemsLength;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16),
+    return Padding(
+      padding: const EdgeInsets.all(16),
       child: Card(
         elevation: 2,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -20,15 +28,18 @@ class ProgressWidget extends StatelessWidget {
                   Row(
                     spacing: 8,
                     children: [
-                      Text("14 / 20", style: TextStyle(fontSize: 48)),
-                      Icon(
+                      Text(
+                        "${checkedItemsLength.toString()} / ${checkListLength.toString()}",
+                        style: const TextStyle(fontSize: 48),
+                      ),
+                      const Icon(
                         Icons.arrow_upward_outlined,
                         color: Color(0xff558b5a),
                         size: 40,
                       ),
                     ],
                   ),
-                  Row(
+                  const Row(
                     spacing: 8,
                     children: [
                       Text("Task Optimized", style: TextStyle(fontSize: 20)),
@@ -48,15 +59,15 @@ class ProgressWidget extends StatelessWidget {
                     width: 100,
                     height: 100,
                     child: CircularProgressIndicator(
-                      value: 0.7,
+                      value: checkedItemsLength / checkListLength,
                       strokeWidth: 8,
-                      backgroundColor: Color(0xffc1cddb),
+                      backgroundColor: const Color(0xffc1cddb),
                       color: Color(0xff496583),
                     ),
                   ),
                   Text(
-                    "70%",
-                    style: TextStyle(
+                    "${((checkedItemsLength / checkListLength) * 100).toInt()}%",
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w500,
                       color: Colors.black87,
