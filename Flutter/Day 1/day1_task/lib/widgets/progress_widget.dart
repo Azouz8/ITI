@@ -62,7 +62,7 @@ class ProgressWidget extends StatelessWidget {
                       value: checkedItemsLength / checkListLength,
                       strokeWidth: 8,
                       backgroundColor: const Color(0xffc1cddb),
-                      color: Color(0xff496583),
+                      color: const Color(0xff496583),
                     ),
                   ),
                   Text(

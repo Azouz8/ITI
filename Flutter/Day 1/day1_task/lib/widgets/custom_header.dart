@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomHeader extends StatefulWidget {
-  CustomHeader({super.key});
+  const CustomHeader({super.key});
 
   @override
   State<CustomHeader> createState() => _CustomHeader();

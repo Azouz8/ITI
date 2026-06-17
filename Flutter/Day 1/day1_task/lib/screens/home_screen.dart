@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              CustomHeader(),
+              const CustomHeader(),
               const CategoriesList(),
               ProgressWidget(
                 checkListLength: criticalCheckList.length,
