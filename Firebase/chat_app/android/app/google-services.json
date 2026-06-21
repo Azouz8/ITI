@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "681638382675",
+    "project_id": "iti-chat-app-e55ae",
+    "storage_bucket": "iti-chat-app-e55ae.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681638382675:android:dd3293d7eaab4c5bb98aa6",
+        "android_client_info": {
+          "package_name": "com.example.chat_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMWZazCQrUIyzFchaYqMstxWUsf2AIThs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
