@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="Day1Task.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Shell.NavBarIsVisible>False</Shell.NavBarIsVisible>
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="16">
+
+            <Image
+                Aspect="AspectFit"
+                HeightRequest="150"
+                HorizontalOptions="Center"
+                Source="welcome_img.svg" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                HorizontalOptions="Center"
+                Text="Sign Up"
+                TextColor="#6b63ff" />
+
+            <Label
+                FontSize="14"
+                Text="Name"
+                TextColor="Gray" />
+            <Entry
+                x:Name="NameEntry"
+                Placeholder="Enter your name"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Email"
+                TextColor="Gray" />
+            <Entry
+                x:Name="EmailEntry"
+                Keyboard="Email"
+                Placeholder="Enter your email"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Password"
+                TextColor="Gray" />
+            <Entry
+                x:Name="PasswordEntry"
+                IsPassword="True"
+                Placeholder="Enter your password"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Confirm Password"
+                TextColor="Gray" />
+            <Entry
+                x:Name="ConfirmPasswordEntry"
+                IsPassword="True"
+                Placeholder="Confirm your password"
+                TextColor="Black" />
+
+            <Button
+                Margin="0,10,0,0"
+                BackgroundColor="#6b63ff"
+                Text="Submit"
+                TextColor="White" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Day2Task.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Day2Task.ViewModels"
+    Title="Add Product">
+
+    <ContentPage.BindingContext>
+        <vm:ProductViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="0">
+
+            <Label
+                Margin="0,16,0,24"
+                FontAttributes="Bold"
+                FontSize="26"
+                HorizontalOptions="Center"
+                Text="🛒 Product Form" />
+
+
+            <VerticalStackLayout Spacing="14">
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="13"
+                    Text="Product Name *"
+                    TextColor="#555" />
+                <Entry
+                    Placeholder="e.g. Wireless Headphones"
+                    ReturnType="Next"
+                    Text="{Binding Name}" />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="13"
+                    Text="Category *"
+                    TextColor="#555" />
+                <Entry
+                    Placeholder="e.g. Electronics"
+                    ReturnType="Next"
+                    Text="{Binding Category}" />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="13"
+                    Text="Price (EGP) *"
+                    TextColor="#555" />
+                <Entry
+                    Keyboard="Numeric"
+                    Placeholder="e.g. 1299.99"
+                    ReturnType="Next"
+                    Text="{Binding PriceText}" />
+
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="13"
+                    Text="Stock Quantity *"
+                    TextColor="#555" />
+                <Entry
+                    Keyboard="Numeric"
+                    Placeholder="e.g. 50"
+                    ReturnType="Next"
+                    Text="{Binding StockText}" />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="13"
+                    Text="Description"
+                    TextColor="#555" />
+                <Editor
+                    AutoSize="TextChanges"
+                    MinimumHeightRequest="45"
+                    Placeholder="Optional product description..."
+                    Text="{Binding Description}" />
+
+                <Label
+                    FontSize="13"
+                    IsVisible="{Binding HasError}"
+                    Text="{Binding ErrorMessage}"
+                    TextColor="Red" />
+
+                <Button
+                    Margin="0,8,0,0"
+                    BackgroundColor="#6C63FF"
+                    Command="{Binding SubmitCommand}"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Text="Submit Product"
+                    TextColor="White" />
+
+            </VerticalStackLayout>
+
+
+
+            <VerticalStackLayout Margin="0,24,0,0" Spacing="10">
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Product Info"
+                    TextColor="#6C63FF" />
+
+
+                <Grid
+                    ColumnDefinitions="Auto,*"
+                    RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                    RowSpacing="8"
+                    ColumnSpacing="8">
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Name:"
+                        TextColor="#555" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{Binding SubmittedProduct.Name}" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Category:"
+                        TextColor="#555" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding SubmittedProduct.Category}" />
+
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Price:"
+                        TextColor="#555" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{Binding SubmittedProduct.Price, StringFormat='EGP {0:N2}'}" />
+
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Stock:"
+                        TextColor="#555" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="{Binding SubmittedProduct.Stock, StringFormat='{0} units'}" />
+
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Description:"
+                        TextColor="#555" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding SubmittedProduct.Description}" />
+
+                </Grid>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
