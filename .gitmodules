@@ -5,3 +5,7 @@
 [submodule "Node-Ecommerce-Platform"]
 	path = NodeJS/Project/Node-Ecommerce-Platform
 	url = https://github.com/YoussefHanna64-bit/Node-Ecommerce-Platform.git
+	
+[submodule "Task-Manager-Flutter"]
+	path = Flutter/project/task_manager
+	url = https://github.com/Azouz8/Task-Manager-Flutter.git
