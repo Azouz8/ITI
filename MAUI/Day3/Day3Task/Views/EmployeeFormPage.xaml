@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Day3Task.Views.EmployeeFormPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Add Employee">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="4">
+
+            <Label
+                Margin="0,8,0,4"
+                FontAttributes="Bold"
+                Text="Full Name" />
+            <Entry Placeholder="Enter full name" Text="{Binding FullName}" />
+            <Label
+                FontSize="12"
+                IsVisible="{Binding FullNameError, Converter={x:StaticResource StringToBoolConverter}}"
+                Text="{Binding FullNameError}"
+                TextColor="Red" />
+
+            <Label
+                Margin="0,8,0,4"
+                FontAttributes="Bold"
+                Text="Email" />
+            <Entry
+                Keyboard="Email"
+                Placeholder="Enter email"
+                Text="{Binding Email}" />
+            <Label
+                FontSize="12"
+                IsVisible="{Binding EmailError, Converter={x:StaticResource StringToBoolConverter}}"
+                Text="{Binding EmailError}"
+                TextColor="Red" />
+
+            <Label
+                Margin="0,8,0,4"
+                FontAttributes="Bold"
+                Text="Phone" />
+            <Entry
+                Keyboard="Telephone"
+                Placeholder="Enter phone number"
+                Text="{Binding Phone}" />
+            <Label
+                FontSize="12"
+                IsVisible="{Binding PhoneError, Converter={x:StaticResource StringToBoolConverter}}"
+                Text="{Binding PhoneError}"
+                TextColor="Red" />
+
+            <Label
+                Margin="0,8,0,4"
+                FontAttributes="Bold"
+                Text="Department" />
+            <Picker
+                Title="Select a department"
+                ItemDisplayBinding="{Binding Name}"
+                ItemsSource="{Binding Departments}"
+                SelectedItem="{Binding SelectedDepartment}" />
+            <Label
+                FontSize="12"
+                IsVisible="{Binding DepartmentError, Converter={x:StaticResource StringToBoolConverter}}"
+                Text="{Binding DepartmentError}"
+                TextColor="Red" />
+
+            <Button
+                Margin="0,24,0,0"
+                BackgroundColor="#512BD4"
+                Command="{Binding SubmitCommand}"
+                CornerRadius="8"
+                HeightRequest="50"
+                Text="Add Employee"
+                TextColor="White" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

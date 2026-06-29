@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Day4Task.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Day4Task.ViewModels"
+    Title="Products">
+
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <ActivityIndicator
+            Grid.Row="0"
+            Margin="0,20,0,0"
+            IsRunning="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}"
+            Color="#6200EE" />
+
+        <CollectionView
+            Grid.Row="1"
+            Margin="10"
+            ItemsSource="{Binding Products}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Border
+                        Margin="0,6"
+                        Padding="12"
+                        BackgroundColor="#282828"
+                        Stroke="#8e8e8e"
+                        StrokeThickness="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+
+                        <Grid ColumnDefinitions="90,*" ColumnSpacing="12">
+
+                            <Border
+                                Grid.Column="0"
+                                HeightRequest="80"
+                                StrokeThickness="0"
+                                WidthRequest="80">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <Image
+                                    Aspect="AspectFill"
+                                    HeightRequest="80"
+                                    Source="{Binding Thumbnail}"
+                                    WidthRequest="80" />
+                            </Border>
+
+                            <VerticalStackLayout
+                                Grid.Column="1"
+                                Spacing="4"
+                                VerticalOptions="Center">
+
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="15"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="1"
+                                    Text="{Binding Title}"
+                                    TextColor="WhiteSmoke" />
+
+                                <Label
+                                    FontSize="12"
+                                    Text="{Binding Brand}"
+                                    TextColor="#a6a6a6" />
+
+                                <Label
+                                    FontSize="12"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2"
+                                    Text="{Binding Description}"
+                                    TextColor="#dadada" />
+
+                                <HorizontalStackLayout Margin="0,4,0,0" Spacing="12">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="14"
+                                        Text="{Binding Price, StringFormat='${0:F2}'}"
+                                        TextColor="#9880e5" />
+
+                                    <Label
+                                        FontSize="13"
+                                        Text="{Binding Rating, StringFormat='⭐ {0:F1}'}"
+                                        TextColor="#F57C00" />
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

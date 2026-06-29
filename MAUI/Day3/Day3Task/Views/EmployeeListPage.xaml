@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Day3Task.Views.EmployeeListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="All Employees">
+
+    <Grid RowDefinitions="Auto, *">
+
+        <Button
+            Grid.Row="0"
+            Margin="16"
+            BackgroundColor="#512BD4"
+            Command="{Binding GoToFormCommand}"
+            CornerRadius="8"
+            HeightRequest="50"
+            Text="+ Add Employee"
+            TextColor="White" />
+
+        <CollectionView
+            Grid.Row="1"
+            Margin="16,0"
+            ItemsSource="{Binding Employees}">
+
+            <CollectionView.EmptyView>
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    Text="No employees yet. Add one!"
+                    TextColor="Gray"
+                    VerticalOptions="Center" />
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Margin="0,6"
+                        Padding="16"
+                        StrokeShape="RoundRectangle 10">
+                        <VerticalStackLayout Spacing="4">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding FullName}" />
+                            <Label
+                                FontSize="13"
+                                Text="{Binding DepartmentName}"
+                                TextColor="#512BD4" />
+                            <Label
+                                FontSize="13"
+                                Text="{Binding Email}"
+                                TextColor="Gray" />
+                            <Label
+                                FontSize="13"
+                                Text="{Binding Phone}"
+                                TextColor="Gray" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

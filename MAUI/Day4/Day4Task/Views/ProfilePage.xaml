@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Day4Task.Views.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Day4Task.ViewModels"
+    Title="Profile">
+
+    <ContentPage.BindingContext>
+        <vm:ProfileViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout
+        Padding="30"
+        HorizontalOptions="Center"
+        Spacing="30"
+        VerticalOptions="Center">
+
+        <Border
+            HeightRequest="160"
+            HorizontalOptions="Center"
+            Stroke="#9880e5"
+            StrokeThickness="3"
+            WidthRequest="160">
+            <Border.StrokeShape>
+                <Ellipse />
+            </Border.StrokeShape>
+
+            <Image
+                Aspect="AspectFill"
+                HeightRequest="160"
+                Source="{Binding ProfileImage}"
+                WidthRequest="160" />
+        </Border>
+
+        <Label
+            FontAttributes="Bold"
+            FontSize="22"
+            HorizontalOptions="Center"
+            Text="Your Profile"
+            TextColor="WhiteSmoke" />
+
+        <Border HorizontalOptions="Center" StrokeThickness="0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="30" />
+            </Border.StrokeShape>
+            <Button
+                Padding="30,14"
+                BackgroundColor="#9880e5"
+                Command="{Binding TakePhotoCommand}"
+                CornerRadius="16"
+                FontSize="16"
+                Text="Take Photo"
+                TextColor="White" />
+        </Border>
+
+    </VerticalStackLayout>
+</ContentPage>
